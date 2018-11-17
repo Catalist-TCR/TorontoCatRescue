@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "hoek": "^6.0.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
