@@ -1,6 +1,6 @@
 from flask import Flask, session, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from form_classes import LoginForm, CatInformation
+from form_classes import LoginForm, ShelterCatInformation, IntakeCatInformation, FosterPlacementCatInformation
 import os
 from flask_oauth import OAuth
 import sys
