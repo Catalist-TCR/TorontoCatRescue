@@ -1,12 +1,12 @@
 from flask import Flask, session, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from form_classes import LoginForm, CatInformation
+from google_sheets import find_permission
 import os
 from flask_oauth import OAuth
 import sys
 import requests
 import config
-
 
 
 GOOGLE_CLIENT_ID = config.OAUTH_CONFIG['GOOGLE_CLIENT_ID']
@@ -69,7 +69,6 @@ def shelter_upload():
 	if access_token is None:
 		return redirect(url_for('login'))
 
-	print(req.text)
 
 	form = CatInformation()
 	if form.validate_on_submit():
@@ -131,15 +130,29 @@ def foster_upload():
 
 @app.route('/')
 def index():
+	
 	#Standard Authentication End
 	access_token = session.get('access_token')
 	email = session.get('email')
 
-	if access_token is None:
+	if access_token is None or email is None:
 		return redirect(url_for('login'))
 
-	form = LoginForm()
-	return render_template('index.html', title='Sign In', form=form)
+	permission = find_permission(email)
+	print(permission)
+	print(email)
+
+	if permission == 'shelter':
+		return redirect(url_for('shelter_upload'))
+	elif permission == 'intake':
+		return redirect(url_for('intake_upload'))
+	elif permission == 'foster':
+		return redirect(url_for('foster_upload'))
+	else:
+		return("User not in system")
+
+	# form = LoginForm()
+	# return render_template('index.html', title='Sign In', form=form)
 
 if __name__ == '__main__':
 	app.run(debug=True)
