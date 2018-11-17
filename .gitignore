@@ -108,3 +108,4 @@ venv.bak/
 # Hackathon specific
 deploy_key
 config.py
+config.pyc
