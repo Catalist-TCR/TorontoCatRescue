@@ -17,6 +17,9 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
+- cp config.py.example config.py
+- sed -ri 's/''GOOGLE_CLIENT_ID'' : ''''/''GOOGLE_CLIENT_ID'' : ''\$GOOGLE_CLIENT_ID''/'
+- sed -ri 's/''GOOGLE_CLIENT_SECRET'' : ''''/''GOOGLE_CLIENT_SECRET'' : ''\$GOOGLE_CLIENT_SECRET''/'
 before_deploy:
 - ssh-keyscan -t rsa,dsa,ecdsa,ed25519 -H $DEPLOY_SERVER_ADDRESS 2>&1 | tee -a $HOME/.ssh/known_hosts
 deploy:
