@@ -1,6 +1,6 @@
 from flask import Flask, session, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
-from form_classes import LoginForm, ShelterCatInformation, IntakeCatInformation, FosterPlacementCatInformation
+from form_classes import LoginForm, CatInformation
 import os
 from flask_oauth import OAuth
 import sys
@@ -15,16 +15,16 @@ REDIRECT_URI = '/oauth2callback'  # one of the Redirect URIs from Google APIs co
 
 oauth = OAuth()
 google = oauth.remote_app('google',
-                          base_url='https://www.google.com/accounts/',
-                          authorize_url='https://accounts.google.com/o/oauth2/auth',
-                          request_token_url=None,
-                          request_token_params={'scope': 'https://www.googleapis.com/auth/userinfo.email',
-                                                'response_type': 'code'},
-                          access_token_url='https://accounts.google.com/o/oauth2/token',
-                          access_token_method='POST',
-                          access_token_params={'grant_type': 'authorization_code'},
-                          consumer_key=GOOGLE_CLIENT_ID,
-                          consumer_secret=GOOGLE_CLIENT_SECRET)
+						  base_url='https://www.google.com/accounts/',
+						  authorize_url='https://accounts.google.com/o/oauth2/auth',
+						  request_token_url=None,
+						  request_token_params={'scope': 'https://www.googleapis.com/auth/userinfo.email',
+												'response_type': 'code'},
+						  access_token_url='https://accounts.google.com/o/oauth2/token',
+						  access_token_method='POST',
+						  access_token_params={'grant_type': 'authorization_code'},
+						  consumer_key=GOOGLE_CLIENT_ID,
+						  consumer_secret=GOOGLE_CLIENT_SECRET)
 
 
 
@@ -54,8 +54,8 @@ def authorized(resp):
 def get_access_token():
 	return session.get('access_token')
 
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
+@app.route('/shelter_upload', methods=['GET', 'POST'])
+def shelter_upload():
 	#Standard Authentication End
 	access_token = session.get('access_token')
 	if access_token is None:
@@ -70,13 +70,70 @@ def upload():
 
 	form = CatInformation()
 	if form.validate_on_submit():
-		f = form.documents.data
+		pho = form.photo.data
 		filename = secure_filename(f.filename)
-		f.save(os.path.join(
-			app.instance_path, 'photos', filename
-		))
+		f.save(os.path.join(app.instance_path, 'photos', filename))
+
+		med_docs = form.medical_notes.data
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
+
 		return redirect(url_for('index'))
-	return render_template('upload.html', form=form)
+	return render_template('shelter_upload.html', form=form)
+
+@app.route('/intake_upload', methods=['GET', 'POST'])
+def intake_upload():
+	#Standard Authentication End
+	access_token = session.get('access_token')
+	if access_token is None:
+		return redirect(url_for('login'))
+	try:
+		req = requests.post('https://www.googleapis.com/oauth2/v1/userinfo',
+				data={'Authorization': 'OAuth '+ access_token[0]})
+	except:
+		session.pop('access_token', None)
+		return redirect(url_for('login'))
+	#Standard Authentication End
+
+	form = CatInformation()
+	if form.validate_on_submit():
+		pho = form.photo.data
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'photos', filename))
+
+		med_docs = form.medical_notes.data
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
+
+		return redirect(url_for('index'))
+	return render_template('intake_upload.html', form=form)
+
+@app.route('/foster_upload', methods=['GET', 'POST'])
+def foster_upload():
+	#Standard Authentication End
+	access_token = session.get('access_token')
+	if access_token is None:
+		return redirect(url_for('login'))
+	try:
+		req = requests.post('https://www.googleapis.com/oauth2/v1/userinfo',
+				data={'Authorization': 'OAuth '+ access_token[0]})
+	except:
+		session.pop('access_token', None)
+		return redirect(url_for('login'))
+	#Standard Authentication End
+
+	form = CatInformation()
+	if form.validate_on_submit():
+		pho = form.photo.data
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'photos', filename))
+
+		med_docs = form.medical_notes.data
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
+
+		return redirect(url_for('index'))
+	return render_template('foster_upload.html', form=form)
 
 @app.route('/')
 def index():
