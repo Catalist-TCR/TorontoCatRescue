@@ -46,7 +46,13 @@ def login():
 @google.authorized_handler
 def authorized(resp):
 	access_token = resp['access_token']
-	session['access_token'] = access_token, ''
+	authorization_header = {"Authorization": "OAuth " + str(access_token)}
+	r = requests.get("https://www.googleapis.com/oauth2/v2/userinfo", 
+						headers=authorization_header)
+	print(r)
+	print(r.json())
+	session['access_token'] = access_token
+	session['email'] = r.json()['email']
 	return redirect(url_for('index'))
 
 
@@ -58,25 +64,22 @@ def get_access_token():
 def shelter_upload():
 	#Standard Authentication End
 	access_token = session.get('access_token')
+	email = session.get('email')
+	
 	if access_token is None:
 		return redirect(url_for('login'))
-	try:
-		req = requests.post('https://www.googleapis.com/oauth2/v1/userinfo',
-				data={'Authorization': 'OAuth '+ access_token[0]})
-	except:
-		session.pop('access_token', None)
-		return redirect(url_for('login'))
-	#Standard Authentication End
+
+	print(req.text)
 
 	form = CatInformation()
 	if form.validate_on_submit():
 		pho = form.photo.data
-		filename = secure_filename(pho.filename)
-		pho.save(os.path.join(app.instance_path, 'photos', filename))
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'photos', filename))
 
 		med_docs = form.medical_notes.data
-		filename = secure_filename(med_docs.filename)
-		med_docs.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
 
 		return redirect(url_for('index'))
 	return render_template('shelter_upload.html', form=form)
@@ -85,25 +88,20 @@ def shelter_upload():
 def intake_upload():
 	#Standard Authentication End
 	access_token = session.get('access_token')
+	email = session.get('email')
+
 	if access_token is None:
 		return redirect(url_for('login'))
-	try:
-		req = requests.post('https://www.googleapis.com/oauth2/v1/userinfo',
-				data={'Authorization': 'OAuth '+ access_token[0]})
-	except:
-		session.pop('access_token', None)
-		return redirect(url_for('login'))
-	#Standard Authentication End
 
 	form = CatInformation()
 	if form.validate_on_submit():
 		pho = form.photo.data
-		filename = secure_filename(pho.filename)
-		pho.save(os.path.join(app.instance_path, 'photos', filename))
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'photos', filename))
 
 		med_docs = form.medical_notes.data
-		filename = secure_filename(med_docs.filename)
-		med_docs.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
 
 		return redirect(url_for('index'))
 	return render_template('intake_upload.html', form=form)
@@ -112,25 +110,21 @@ def intake_upload():
 def foster_upload():
 	#Standard Authentication End
 	access_token = session.get('access_token')
+	email = session.get('email')
+
 	if access_token is None:
 		return redirect(url_for('login'))
-	try:
-		req = requests.post('https://www.googleapis.com/oauth2/v1/userinfo',
-				data={'Authorization': 'OAuth '+ access_token[0]})
-	except:
-		session.pop('access_token', None)
-		return redirect(url_for('login'))
-	#Standard Authentication End
+	
 
 	form = CatInformation()
 	if form.validate_on_submit():
 		pho = form.photo.data
-		filename = secure_filename(pho.filename)
-		pho.save(os.path.join(app.instance_path, 'photos', filename))
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'photos', filename))
 
 		med_docs = form.medical_notes.data
-		filename = secure_filename(med_docs.filename)
-		med_docs.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		filename = secure_filename(f.filename)
+		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
 
 		return redirect(url_for('index'))
 	return render_template('foster_upload.html', form=form)
@@ -139,16 +133,10 @@ def foster_upload():
 def index():
 	#Standard Authentication End
 	access_token = session.get('access_token')
+	email = session.get('email')
+
 	if access_token is None:
 		return redirect(url_for('login'))
-	try:
-		req = requests.post('https://www.googleapis.com/oauth2/v1/userinfo',
-				data={'Authorization': 'OAuth '+ access_token[0]})
-	except:
-		session.pop('access_token', None)
-		return redirect(url_for('login'))
-	#Standard Authentication End
-
 
 	form = LoginForm()
 	return render_template('index.html', title='Sign In', form=form)
