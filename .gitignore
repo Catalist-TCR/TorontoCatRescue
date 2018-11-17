@@ -103,4 +103,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+# Hackathon specific
 deploy_key
+config.py
