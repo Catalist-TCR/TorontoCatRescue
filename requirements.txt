@@ -2,7 +2,7 @@ certifi==2018.10.15
 chardet==3.0.4
 Click==7.0
 Flask==1.0.2
--e git+https://github.com/mitsuhiko/flask-oauth@af64326#egg=Flask_OAuth
+git+https://github.com/mitsuhiko/flask-oauth@af64326#egg=Flask_OAuth
 Flask-WTF==0.14.2
 gspread==3.0.1
 httplib2==0.12.0
