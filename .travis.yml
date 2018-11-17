@@ -19,7 +19,7 @@ before_install:
 - ssh-add /tmp/deploy_key
 
 before_deploy:
-- ssh-keyscan -t $TRAVIS_SSH_KEY_TYPES -H $DEPLOY_SERVER_ADDRESS 2>&1 | tee -a $HOME/.ssh/known_hosts
+- ssh-keyscan -t rsa,dsa,ecdsa,ed25519 -H $DEPLOY_SERVER_ADDRESS 2>&1 | tee -a $HOME/.ssh/known_hosts
 
 deploy:
   provider: script
