@@ -1,19 +1,109 @@
 {% extends "header.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" enctype="multipart/form-data" novalidate >
-        {{ form.hidden_tag() }}
-        <p>
-            
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.documents }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
+	<h1>Sign In</h1>
+	<form action="" method="post" enctype="multipart/form-data" novalidate >
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.date.label }}<br>
+			{{ form.date(size=32) }}
+		</p>
+		<p>
+			{{ form.name.label }}<br>
+			{{ form.name(size=32) }}
+		</p>
+		<p>
+			{{ form.date_of_birth.label }}<br>
+			{{ form.date_of_birth(size=32) }}
+		</p>
+		<p>
+			{{ form.age.label }}<br>
+			{{ form.age(size=32) }}
+		</p>
+		<p>
+			{{ form.sex.label }}<br>
+			{{ form.sex(size=2) }}
+
+		</p>		
+		<p>
+			{{ form.photo.label }}
+			{{ form.photo }}
+		</p>
+		<p>
+			{{ form.description.label }}<br>
+			{{ form.description(size=42) }}
+		</p>
+		<p>
+			{{ form.sn.label }}<br>
+			{{ form.sn(size=2) }}
+		</p>
+		<p>
+			{{ form.shelter_name.label }}<br>
+			{{ form.shelter_name(size=32) }}
+		</p>
+		<p>
+			{{ form.shelter_id.label }}<br>
+			{{ form.shelter_id(size=32) }}
+		</p>
+		<p>
+			{{ form.fiv_tested.label }}<br>
+			{{ form.fiv_tested(size=3) }}
+		</p>
+		<p>
+			{{ form.flv_tested.label }}<br>
+			{{ form.flv_tested(size=3) }}
+		</p>
+		<p>
+			{{ form.fvrcp_vaccination_date.label }}<br>
+			{{ form.fvrcp_vaccination_date(size=32) }}
+		</p>
+		<p>
+			{{ form.rabies_vaccination_date.label }}<br>
+			{{ form.rabies_vaccination_date(size=32) }}
+		</p>
+		<p>
+			{{ form.medical_notes.label }}<br>
+			{{ form.medical_notes(size=42) }}
+		</p>
+		<p>
+			{{ form.medical_documents.label }}
+			{{ form.medical_documents }}
+		</p>
+		<p>
+			{{ form.behaviour_notes.label }}<br>
+			{{ form.behaviour_notes(size=42) }}
+		</p>
+		<p>{{ form.submit() }}</p>
+	</form>
 {% endblock %}
+
+
+
+<!-- 
+date = DateField('Date', format='%Y-%m-%d')
+name = StringField('Cat Name', validators=[DataRequired()])
+date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
+age = StringField('Age')
+sex = SelectField('Sex', choices=['M','F'], validators=[Required()])
+description = TextAreaField('Description')
+sn = SelectField('S/N', choices=['Yes','No'], validators=[Required()])
+shelter_name = StringField('Shelter Name', validators=[DataRequired()])
+shelter_id = StringField('Shelter ID', validators=[DataRequired()])
+photo = FileField('Cat Photo', validators=[FileRequired()])
+fiv_tested = SelectField('FIV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
+flv_tested = SelectField('FLV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
+fvrcp_vaccination_date = DateField('FVRCP Vaccination Date', format='%Y-%m-%d')
+rabies_vaccination_date = DateField('Rabies Vaccination Date', format='%Y-%m-%d')
+medical_notes = TextAreaField('Medical Notes')
+medical_documents = FileField('Medical Documents', validators=[FileRequired()])
+behaviour_notes = TextAreaField('Behaviour Notes')
+#INTAKE
+petpoint_id = StringField('Petpoint ID', validators=[DataRequired()])
+outcome = TextAreaField('Entered into TCR program, euthanized, etc.')
+intake_date = DateField('Intake Date', format='%Y-%m-%d')
+#FOSTER HOME
+foster_placement_date = DateField('Placement Date', format='%Y-%m-%d')
+location = SelectField('Location', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
+
+submit = SubmitField('Submit')
+ -->

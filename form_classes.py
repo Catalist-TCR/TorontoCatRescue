@@ -17,14 +17,14 @@ class CatInformation(FlaskForm):
 	name = StringField('Cat Name', validators=[DataRequired()])
 	date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
 	age = StringField('Age')
-	sex = SelectField('Sex', choices=['M','F'], validators=[Required()])
+	sex = SelectField('Sex', choices=[('m', 'M'),('f', 'F')], validators=[Required()])
 	description = TextAreaField('Description')
-	sn = SelectField('S/N', choices=['Yes','No'], validators=[Required()])
+	sn = SelectField('S/N', choices=[('y','Yes'),('n','No')], validators=[Required()])
 	shelter_name = StringField('Shelter Name', validators=[DataRequired()])
 	shelter_id = StringField('Shelter ID', validators=[DataRequired()])
 	photo = FileField('Cat Photo', validators=[FileRequired()])
-	fiv_tested = SelectField('FIV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-	flv_tested = SelectField('FLV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
+	fiv_tested = SelectField('FIV Tested', choices=[('pos','Tested Positive'), ('neg', 'Tested Negative'), ('none','Not Tested')], validators=[Required()])
+	flv_tested = SelectField('FLV Tested', choices=[('pos','Tested Positive'), ('neg', 'Tested Negative'), ('none','Not Tested')], validators=[Required()])
 	fvrcp_vaccination_date = DateField('FVRCP Vaccination Date', format='%Y-%m-%d')
 	rabies_vaccination_date = DateField('Rabies Vaccination Date', format='%Y-%m-%d')
 	medical_notes = TextAreaField('Medical Notes')
@@ -32,11 +32,11 @@ class CatInformation(FlaskForm):
 	behaviour_notes = TextAreaField('Behaviour Notes')
 	#INTAKE
 	petpoint_id = StringField('Petpoint ID', validators=[DataRequired()])
-	outcome = TextAreaField('Entered into TCR program, euthanized, etc.')
+	outcome = TextAreaField('Outcome')
 	intake_date = DateField('Intake Date', format='%Y-%m-%d')
 	#FOSTER HOME
 	foster_placement_date = DateField('Placement Date', format='%Y-%m-%d')
-	location = SelectField('Location', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
+	location = SelectField('Location', choices=[('tw', 'Toronto West'), ('te', 'Toronto East'), ('other','Other')], validators=[Required()])
 	
 	submit = SubmitField('Submit')
 
