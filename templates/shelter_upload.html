@@ -73,6 +73,10 @@
 			{{ form.behaviour_notes.label }}<br>
 			{{ form.behaviour_notes(size=42) }}
 		</p>
+		<p>
+			{{ form.urgent() }}<br>
+			{{ form.urgent.label }}
+		</p>
 		<p>{{ form.submit() }}</p>
 	</form>
 {% endblock %}
