@@ -1,30 +1,27 @@
 language: python
 sudo: required
 dist: xenial
-python: "3.7"
+python: '3.7'
 env:
   global:
-    - DEPLOY_SERVER_ADDRESS=catalist.thefed.xyz
-    - DEPLOY_SERVER_USER=hackathon
-    - DEPLOY_SERVER_PATH=/home/hackathon/catalist
-
+  - DEPLOY_SERVER_ADDRESS=catalist.thefed.xyz
+  - DEPLOY_SERVER_USER=hackathon
+  - DEPLOY_SERVER_PATH=/home/hackathon/catalist
+  - secure: DxB9D133FOVSSDAYVWPymWelrYPj7dHkj1jLMfPUKQ1tOJzZNqMaNuWtKs0Yj77Dr9kMGDMC9pPA526yQWYIsWJB0lYO+COsgl7ct6t271Fa1nnZxsW/yEB+SAaywsCw9sAXgp4lC+guHdXETwiD/B5JYC3FTC8KZA/hwC/NgjVYqwmjd0dodszgT+U3HddJOYA324RT7SIx0QD5E1eXXSG/bELcGZ+XGqTS1HOXV+jr6YoP7ZoFWkh68C7mSjy7zNBsDfw8eunVuYSthrmNfwhrm9r0JcZXJDFeK5aDnAYcgtJ5qEO4Sr3tLAtdLOwf7A32Z9RYQE0ixmqnJH2NRh/Ah/6HuhZHGg3fBJe8QWk3RMZFjwXYF24FzcrwzwgW7YkcL7k8MMZ8hovtIHNfIrUqQipT2nzkZRXvudpIz1mkACKzXSLXnaVqrry2dFvgXvv7puZGeMy2ETFqzTrE2CO+P8tSk5S4KGGJnv3tavwriLVJiCGyWjzZk+idTPL7xgHoJO7fQZqokCSBdaYOAihrWWm9k3hMMzfJtjuHHSfalT2kJolJLgMkoZ2rqvJmgQX9bX4wYPndmBB0law46A7WALIQHoo7RaUKo6PKOAkEtn8/Dng6Cewf2d1zRUgNIMeHviFuS21yEgoj1VsDMEER9hXih9oH06i8BRBF2tg=
+  - secure: KX27vq1OAcQ2JNgvz5/MiDSqkM095VKJRezWPh+Myd7dyR8IbogW8aINI9IJxXH8p1QxBhIU5aKMc4nUD+2F46qTWwxw+5buiF6/pWAH6FLf9xCnQoWYrXAuzH+TmSU+2XX288sWcyx64FEzjsqJe3VX25HlGuxRnn8SumlL7vNq6b2xmpEasDdEiks9/FIIcSP2GNFC1yBtwL+ame+Ne4HEhhPJIi7hOOxuuIFkRGypF/BR0N82Zhr9rOSec/6ahO3MF/XW1xc7gmclWTKRw+DAQyCG2JyQ3LqXp9ok3MENd5Jzz5Dd/9botIA3hTPXD6bXhnAW6Be6FmiHEAXaRfvoh2xEz73a2Q1iixdIpFmiD0kn4P+auGO0P2R1fOSIzlzYWls0KLQdlCPYgSsDCErHcaDHQGO/c85zZ9rP469gFQ7jco32kN2LvIgJDRH5hazAWFOunFEqJiHsK5aNOm9KcjvJWkeavChnehSu5A+d7Lj2hsZHct40UY2JT8XEfe4t4qZ3XQTW6sKYH57m83Iny/RYEp+U2IN2CxcGRDTiwIRdo46NHw0dQ3MF9lfoCLiNfEUWR6H1MbO5/c5EHXmQa1M6xVDXp9irqCFepku1tMmmL12dKd39orL3M+kR/AJtf8u5kHvsen4FYwR+L5+dsXRZkLSU7LGKtRGa9Y8=
 script:
 - echo "No tests to run"
-
 before_install:
 - openssl aes-256-cbc -K $encrypted_04fb17de469d_key -iv $encrypted_04fb17de469d_iv
   -in deploy_key.enc -out /tmp/deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
-
 before_deploy:
 - ssh-keyscan -t rsa,dsa,ecdsa,ed25519 -H $DEPLOY_SERVER_ADDRESS 2>&1 | tee -a $HOME/.ssh/known_hosts
-
 deploy:
   provider: script
   skip_cleanup: true
   script: bash scripts/deploy.sh
   on:
     branch: master
-
