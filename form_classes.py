@@ -30,6 +30,7 @@ class CatInformation(FlaskForm):
 	medical_notes = TextAreaField('Medical Notes')
 	medical_documents = FileField('Medical Documents', validators=[FileRequired()])
 	behaviour_notes = TextAreaField('Behaviour Notes')
+	urgent = BooleanField('Urgent')
 	#INTAKE
 	petpoint_id = StringField('Petpoint ID', validators=[DataRequired()])
 	outcome = TextAreaField('Outcome')
