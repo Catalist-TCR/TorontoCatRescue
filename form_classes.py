@@ -1,86 +1,44 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField, TextAreaField, SelectField
 from flask_wtf.file import FileField, FileRequired
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Required
 
 
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
+	username = StringField('Username', validators=[DataRequired()])
+	password = PasswordField('Password', validators=[DataRequired()])
+	remember_me = BooleanField('Remember Me')
+	submit = SubmitField('Sign In')
 
-class ShelterCatInformation(FlaskForm):
+class CatInformation(FlaskForm):
 	date = DateField('Date', format='%Y-%m-%d')
-    name = StringField('Cat Name', validators=[DataRequired()])
-    date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
-    age = StringField('Age')
-    sex = SelectField('Sex', choices=['M','F'], validators=[Required()])
-    description = TextAreaField('Description')
-    sn = SelectField('S/N', choices=['Yes','No'], validators=[Required()])
-    shelter_name = StringField('Shelter Name', validators=[DataRequired()])
-    shelter_id = StringField('Shelter ID', validators=[DataRequired()])
-    photo = FileField('Cat Photo', validators=[FileRequired()])
-    fiv_tested = SelectField('FIV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    flv_tested = SelectField('FLV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    fvrcp_vaccination_date = DateField('FVRCP Vaccination Date', format='%Y-%m-%d')
-    rabies_vaccination_date = DateField('Rabies Vaccination Date', format='%Y-%m-%d')
-    medical_notes = TextAreaField('Medical Notes')
-    medical_documents = FileField('Medical Documents', validators=[FileRequired()])
-    behaviour_notes = TextAreaField('Behaviour Notes')
-    submit = SubmitField('Submit')
-
-class IntakeCatInformation(FlaskForm):
-	date = DateField('Date', format='%Y-%m-%d')
-    name = StringField('Cat Name', validators=[DataRequired()])
-    date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
-    age = StringField('Age')
-    sex = SelectField('Sex', choices=['M','F'], validators=[Required()])
-    description = TextAreaField('Description')
-    sn = SelectField('S/N', choices=['Yes','No'], validators=[Required()])
-    shelter_name = StringField('Shelter Name', validators=[DataRequired()])
-    shelter_id = StringField('Shelter ID', validators=[DataRequired()])
-    photo = FileField('Cat Photo', validators=[FileRequired()])
-    fiv_tested = SelectField('FIV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    flv_tested = SelectField('FLV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    fvrcp_vaccination_date = DateField('FVRCP Vaccination Date', format='%Y-%m-%d')
-    rabies_vaccination_date = DateField('Rabies Vaccination Date', format='%Y-%m-%d')
-    medical_notes = TextAreaField('Medical Notes')
-    medical_documents = FileField('Medical Documents', validators=[FileRequired()])
-    behaviour_notes = TextAreaField('Behaviour Notes')
-    #INTAKE
-    petpoint_id = StringField('Petpoint ID', validators=[DataRequired()])
-    outcome = TextAreaField('Entered into TCR program, euthanized, etc.')
-    intake_date = DateField('Intake Date', format='%Y-%m-%d')
-    submit = SubmitField('Submit')
-
-class FosterPlacementCatInformation(FlaskForm):
-	date = DateField('Date', format='%Y-%m-%d')
-    name = StringField('Cat Name', validators=[DataRequired()])
-    date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
-    age = StringField('Age')
-    sex = SelectField('Sex', choices=['M','F'], validators=[Required()])
-    description = TextAreaField('Description')
-    sn = SelectField('S/N', choices=['Yes','No'], validators=[Required()])
-    shelter_name = StringField('Shelter Name', validators=[DataRequired()])
-    shelter_id = StringField('Shelter ID', validators=[DataRequired()])
-    photo = FileField('Cat Photo', validators=[FileRequired()])
-    fiv_tested = SelectField('FIV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    flv_tested = SelectField('FLV Tested', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    fvrcp_vaccination_date = DateField('FVRCP Vaccination Date', format='%Y-%m-%d')
-    rabies_vaccination_date = DateField('Rabies Vaccination Date', format='%Y-%m-%d')
-    medical_notes = TextAreaField('Medical Notes')
-    medical_documents = FileField('Medical Documents', validators=[FileRequired()])
-    behaviour_notes = TextAreaField('Behaviour Notes')
-    petpoint_id = StringField('Petpoint ID', validators=[DataRequired()])
-    outcome = TextAreaField('Entered into TCR program, euthanized, etc.')
-    intake_date = DateField('Intake Date', format='%Y-%m-%d')
-    #FOSTER HOME
-    foster_placement_date = DateField('Placement Date', format='%Y-%m-%d')
-    location = SelectField('Location', choices=['Tested Positive', 'Tested Negative', 'Not Tested'], validators=[Required()])
-    submit = SubmitField('Submit')
+	name = StringField('Cat Name', validators=[DataRequired()])
+	date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
+	age = StringField('Age')
+	sex = SelectField('Sex', choices=[('m', 'M'),('f', 'F')], validators=[Required()])
+	description = TextAreaField('Description')
+	sn = SelectField('S/N', choices=[('y','Yes'),('n','No')], validators=[Required()])
+	shelter_name = StringField('Shelter Name', validators=[DataRequired()])
+	shelter_id = StringField('Shelter ID', validators=[DataRequired()])
+	photo = FileField('Cat Photo', validators=[FileRequired()])
+	fiv_tested = SelectField('FIV Tested', choices=[('pos','Tested Positive'), ('neg', 'Tested Negative'), ('none','Not Tested')], validators=[Required()])
+	flv_tested = SelectField('FLV Tested', choices=[('pos','Tested Positive'), ('neg', 'Tested Negative'), ('none','Not Tested')], validators=[Required()])
+	fvrcp_vaccination_date = DateField('FVRCP Vaccination Date', format='%Y-%m-%d')
+	rabies_vaccination_date = DateField('Rabies Vaccination Date', format='%Y-%m-%d')
+	medical_notes = TextAreaField('Medical Notes')
+	medical_documents = FileField('Medical Documents', validators=[FileRequired()])
+	behaviour_notes = TextAreaField('Behaviour Notes')
+	#INTAKE
+	petpoint_id = StringField('Petpoint ID', validators=[DataRequired()])
+	outcome = TextAreaField('Outcome')
+	intake_date = DateField('Intake Date', format='%Y-%m-%d')
+	#FOSTER HOME
+	foster_placement_date = DateField('Placement Date', format='%Y-%m-%d')
+	location = SelectField('Location', choices=[('tw', 'Toronto West'), ('te', 'Toronto East'), ('other','Other')], validators=[Required()])
+	
+	submit = SubmitField('Submit')
 
 
 '''
