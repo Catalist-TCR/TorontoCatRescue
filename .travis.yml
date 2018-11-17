@@ -8,13 +8,15 @@ env:
     - DEPLOY_SERVER_USER=hackathon
     - DEPLOY_SERVER_PATH=/home/hackathon/catalist
 
+addons:
+  ssh_known_hosts: $DEPLOY_SERVER_ADDRESS
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_04fb17de469d_key -iv $encrypted_04fb17de469d_iv
-  -in deploy_key.enc -out ../deploy_key -d
+  -in deploy_key.enc -out /tmp/deploy_key -d
 - eval "$(ssh-agent -s)"
-- chmod 600 ./deploy_key
-- echo -e "Host $DEPLOY_SERVER_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- ssh-add ./deploy_key
+- chmod 600 /tmp/deploy_key
+- ssh-add /tmp/deploy_key
 
 deploy:
   provider: script
