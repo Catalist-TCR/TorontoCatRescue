@@ -8,6 +8,9 @@ env:
     - DEPLOY_SERVER_USER=hackathon
     - DEPLOY_SERVER_PATH=/home/hackathon/catalist
 
+script:
+- echo "No tests to run"
+
 addons:
   ssh_known_hosts: $DEPLOY_SERVER_ADDRESS
 
