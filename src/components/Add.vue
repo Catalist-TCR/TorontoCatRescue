@@ -1,22 +1,14 @@
 <template>
-  <div class="hello">
-    <h1>Welcome to Catalist</h1>
-      <Login />
-  </div>
+  <main add-cat="add-cat">
+    <p>To submit a request to Toronto Cat Rescue...</p>
+  </main>
 </template>
 
 <script>
-import Login from './Login.vue';
 
 //this is to export variables here, to be passed up to parent files
 export default {
-  name: 'Welcome',
-  props: {
-    msg: String
-  },
-  components: {
-    Login
-  },
+  name: 'Add',
 }
 </script>
 
@@ -35,5 +27,8 @@ li {
 }
 a {
   color: #42b983;
+}
+main{
+    background-color: pink;
 }
 </style>

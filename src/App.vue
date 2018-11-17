@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Welcome msg="Welcome to Catalist"/>
+    <img alt="Catalist" src="../images/TCR-Logo.svg">
+    <router-view>
+        <Welcome />
+    </router-view>
   </div>
 </template>
 
 <script>
-import Welcome from './components/Welcome.vue'
+import Welcome from './components/Welcome.vue';
+import Add from './components/Add.vue';
+
+const routes = [
+  { path: '/login', component: Welcome },
+  { path: '/addcat', component: Add },
+]
 
 export default {
   name: 'app',
@@ -14,6 +22,7 @@ export default {
     Welcome
   }
 }
+
 </script>
 
 <style>
@@ -24,5 +33,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app img {
+  width: 50%;
+  max-width: 300px;
 }
 </style>

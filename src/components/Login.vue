@@ -7,6 +7,8 @@
         <br />
         <label for="password">Password:</label>
         <input id="password-input" type="text"/>
+        <br/>
+        <button type="submit">Submit</button>
     </form>
   </div>
 </template>
