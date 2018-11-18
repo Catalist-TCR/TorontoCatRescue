@@ -1,11 +1,16 @@
 .header{
-    padding-top: 4rem;
-    border-bottom: 1px #000;
+    padding-top: 2rem;
+    position: sticky;
+    background: #fff;
+    top:0;
+    z-index: 100;
+    box-shadow: 1px 1px 3px 1px #BBBBBB;
 }
 
 .logo{
     width: 120px;
     float: left;
+    padding-bottom: 1rem;
 }
 
 nav{
@@ -32,5 +37,9 @@ nav a{
 }
 
 nav a:hover{
+    border-bottom: 4px solid #34A798;
+}
 
+nav a.link_active{
+    border-bottom: 4px solid #34A798;
 }
