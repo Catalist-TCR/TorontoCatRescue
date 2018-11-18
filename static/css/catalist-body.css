@@ -1,0 +1,25 @@
+span.underline {
+    text-decoration: underline;
+    margin-bottom: 40px;
+}
+
+.intro {
+	margin-bottom: 40px;
+}
+
+.drag-drop {
+	border: 2px dashed #A7A7A7;
+	margin-bottom: 3.5rem;
+	text-align: center;
+	padding-top: 1.5rem;
+}
+
+hr.style1{
+	border-top: 1px solid #A7A7A7;
+	margin-top: 6rem;
+	margin-bottom: 6rem;
+}
+
+.form-element{
+	padding-bottom: 10px;
+}

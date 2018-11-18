@@ -1,14 +1,48 @@
 <html>
-    <head>
-      {% if title %}
-      <title>{{ title }} - Cat a list </title>
-      {% else %}
-      <title>Cat a list</title>
-      {% endif %}
-    </head>
-    <body>
-        <div>Microblog: <a href="/index">Home</a></div>
-        <hr>
-        {% block content %}{% endblock %}
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if title %}
+    <title>{{ title }} - Catalist</title>
+    {% else %}
+    <title>Catalist</title>
+    {% endif %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/catalist.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/catalist-body.css') }}">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='img/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div class="section header">
+        <div class="container">
+            <div class="logo"><img src="{{ url_for('static', filename='img/logo.svg') }}"></div>
+            <div>{% include 'header_buttons.html' %}</div>
+        </div>
+    </div>
+    <div class="section body">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+
+<style>
+    *{
+        font-family: 'Nunito Sans', sans-serif;
+    }
+</style>
+
 </html>

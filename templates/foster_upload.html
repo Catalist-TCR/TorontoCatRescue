@@ -1,104 +1,176 @@
 {% extends "header.html" %}
 
 {% block content %}
-	<h1>Sign In</h1>
-	<form action="" method="post" enctype="multipart/form-data" novalidate >
-		{{ form.hidden_tag() }}
-		<p>
-			{{ form.date.label }}<br>
+<div class="intro">To submit a request to Toronto Cat Rescue, fill out the form below or add multiple cats by importing
+	a <span class="underline">Google Sheet</span>, <span class="underline">Excel file</span>, or <span class="underline">CSV
+		file</span>.</div>
+<form action="" method="post" enctype="multipart/form-data" novalidate>
+	{{ form.hidden_tag() }}
+	{{ form.csrf_token }}
+	<!--<div class="row form-element">
+			{{ form.date.label }}
 			{{ form.date(size=32) }}
-		</p>
-		<p>
-			{{ form.name.label }}<br>
-			{{ form.name(size=32) }}
-		</p>
-		<p>
-			{{ form.date_of_birth.label }}<br>
-			{{ form.date_of_birth(size=32) }}
-		</p>
-		<p>
-			{{ form.age.label }}<br>
-			{{ form.age(size=32) }}
-		</p>
-		<p>
-			{{ form.sex.label }}<br>
-			{{ form.sex(size=2) }}
+		</div> -->
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.petpoint_id.label }}
+			{{ form.petpoint_id() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.outcome.label }}
+			{{ form.outcome() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.intake_date.label }}
+			{{ form.intake_date() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.foster_placement_date.label }}
+			{{ form.foster_placement_date() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.location.label }}
+			{{ form.location() }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="ten columns">
+			<hr class="style1">
+		</div>
+	</div>
 
-		</p>		
-		<p>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.shelter_name.label }}
+			{{ form.shelter_name() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.shelter_id.label }}
+			{{ form.shelter_id() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.name.label }}
+			{{ form.name() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.date_of_birth.label }}
+			{{ form.date_of_birth() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.age.label }}
+			{{ form.age() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.sex.label }}
+			{{ form.sex() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.sn.label }}
+			{{ form.sn() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.description.label }}
+			{{ form.description() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
 			{{ form.photo.label }}
-			{{ form.photo }}
-		</p>
-		<p>
-			{{ form.description.label }}<br>
-			{{ form.description(size=42) }}
-		</p>
-		<p>
-			{{ form.sn.label }}<br>
-			{{ form.sn(size=2) }}
-		</p>
-		<p>
-			{{ form.shelter_name.label }}<br>
-			{{ form.shelter_name(size=32) }}
-		</p>
-		<p>
-			{{ form.shelter_id.label }}<br>
-			{{ form.shelter_id(size=32) }}
-		</p>
-		<p>
-			{{ form.fiv_tested.label }}<br>
-			{{ form.fiv_tested(size=3) }}
-		</p>
-		<p>
-			{{ form.flv_tested.label }}<br>
-			{{ form.flv_tested(size=3) }}
-		</p>
-		<p>
-			{{ form.fvrcp_vaccination_date.label }}<br>
-			{{ form.fvrcp_vaccination_date(size=32) }}
-		</p>
-		<p>
-			{{ form.rabies_vaccination_date.label }}<br>
-			{{ form.rabies_vaccination_date(size=32) }}
-		</p>
-		<p>
-			{{ form.medical_notes.label }}<br>
-			{{ form.medical_notes(size=42) }}
-		</p>
-		<p>
+			<div class="drag-drop">{{ form.photo }}
+			</div>
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
 			{{ form.medical_documents.label }}
-			{{ form.medical_documents }}
-		</p>
-		<p>
-			{{ form.behaviour_notes.label }}<br>
-			{{ form.behaviour_notes(size=42) }}
-		</p>
-		<p>
-			{{ form.urgent() }}<br>
-			{{ form.urgent.label }}
-		</p>
-		<p>
-			{{ form.petpoint_id.label }}<br>
-			{{ form.petpoint_id(size=32) }}
-		</p>
-		<p>
-			{{ form.outcome.label }}<br>
-			{{ form.outcome(size=32) }}
-		</p>
-		<p>
-			{{ form.intake_date.label }}<br>
-			{{ form.intake_date(size=32) }}
-		</p>
-		<p>
-			{{ form.foster_placement_date.label }}<br>
-			{{ form.foster_placement_date(size=32) }}
-		</p>
-		<p>
-			{{ form.location.label }}<br>
-			{{ form.location(size=3) }}
-		</p>
-		<p>{{ form.submit() }}</p>
-	</form>
+			<div class="drag-drop"> {{ form.medical_documents }}
+			</div>
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.fiv_tested.label }}
+			{{ form.fiv_tested() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.flv_tested.label }}
+			{{ form.flv_tested() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.fvrcp_vaccination_date.label }}
+			{{ form.fvrcp_vaccination_date() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.rabies_vaccination_date.label }}
+			{{ form.rabies_vaccination_date() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.medical_notes.label }}
+			{{ form.medical_notes() }}
+		</div>
+
+	</div>
+
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.behaviour_notes.label }}
+			{{ form.behaviour_notes() }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<label class="form.urgent">
+			<input type="checkbox">
+			<span class="label-body">Urgent</span>
+		</label>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.foster_coordinator.label }}
+			{{ form.foster_coordinator(size=80) }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="ten columns">
+			{{ form.foster_parent.label }}
+			{{ form.foster_parent(size=80) }}
+		</div>
+	</div>
+	<div class="row form-element">
+		<div class="three columns u-pull-right">
+			<input id="submit" name="submit" type="submit" value="Save & Add New">
+		</div>
+	</div>
+</form>
 {% endblock %}
 
 

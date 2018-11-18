@@ -1,0 +1,124 @@
+<!--DATABASE
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
+  <title>Database</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css-database/normalize.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css-database/main.css')}}" rel="stylesheet">
+  <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+</head>
+
+<body id="background">
+  <div id="box">
+    <h1>Database</h1>
+    <h3>Select row to highlight</h3>
+    <script src="{{ url_for('static', filename='js/google-sheets-html-database.js') }}" type="text/javascript"></script>
+    <div id="table">
+    </div>
+    <br>
+    <button>BACK</button>
+  </div>
+</body>
+</html>
+-->
+
+{% extends "header.html" %}
+
+{% block content %}
+{% for card in cards %}
+<div class="card-container">
+  <div class="image">
+    <img class="kitty-image" src="../instance/photos/{{card[1]}}.png" />
+  </div>
+  <div class="personal-details">
+    <h2 style="font-size: 18px;">{{card[1]}}</h2>
+    <p><b>{{card[0]}}</b></p>
+    <p><b>{{card[4]}}</b></p>
+    <span>S/N: <span><b>{{card[6]}}</b></span></span>
+    <div id="medical">
+      <legend>Medical Documents:</legend>
+      <a href="#">attachment 1</a>
+      <br />
+      <a href="#">attachment 2</a>
+    </div>
+  </div>
+  <div class="extra-info">
+    <p><span>Requested Date:</span><b>{{card[0]}}</b></p>
+    <p><span> FIV: </span><b>{{card[11]}}</b></p>
+    <p><span> FLV: </span><b>{{card[12]}}</b></p>
+    <p><span> FVRCP Vaccination: </span><b>{{card[10]}}</b></p>
+    <p><span> Rabies Vaccination: </span><b>{{card[9]}}</b></p>
+    <p><span> Medical Description: </span><b>{{card[13]}}</b></p>
+    <p><span> Behaviour Description: </span><b>{{card[14]}}</b></p>
+  </div>
+  <img id="edit-cat-info" src="" />
+</div>
+{% endfor %}
+
+
+
+<style>
+  .card-container {
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 150px 1fr 2fr;
+    grid-gap: 10px;
+    max-width: 100%;
+    background-color: #fff;
+    color: #444;
+    font-size: 14px;
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(186, 186, 186, 0.5);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(186, 186, 186, 0.5);
+    box-shadow: 0px 2px 2px 0px rgba(186, 186, 186, 0.5);
+  }
+
+  .card-container:hover{
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 85, 140, 0.5);
+    -moz-box-shadow: 0px 2px 2px 0px rgba(0, 85, 140, 0.5);
+    box-shadow: 0px 2px 2px 0px rgba(0, 85, 140, 0.5);
+  }
+
+  #medical a {
+    margin-left: 20%;
+    color: #00558C;
+  }
+
+  .card-container p {
+    margin: 5px 0;
+  }
+
+  .card-container div {
+    background-color: white;
+    color: black;
+  }
+
+  .kitty-image {
+    max-width: 150px;
+  }
+
+  .personal-details{
+    padding-left: 10%;
+  }
+
+  .personal-details,
+  .extra-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: end;
+    max-height: 200px;
+  }
+
+  .personal-details h2 {
+    color: #00558C;
+    margin: 0;
+  }
+</style>
+
+
+{% endblock %}
