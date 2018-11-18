@@ -13,3 +13,9 @@ h7-underline {
 	text-align: center;
 	padding-top: 1.5rem;
 }
+
+hr.style1{
+	border-top: 1px solid #A7A7A7;
+	margin-top: 6rem;
+	margin-bottom: 6rem;
+}

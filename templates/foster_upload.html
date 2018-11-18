@@ -28,10 +28,9 @@
 		</p>
 		<p>
 			{{ form.location.label }}
-			{{ form.location(size=3) }}
+			{{ form.location(size=80) }}
 		</p>
-
-
+		<hr class="style1">
 		<p>
 			{{ form.shelter_name.label }}
 			{{ form.shelter_name(size=80) }}
@@ -66,12 +65,12 @@
 		</p>
 		<p>
 			{{ form.photo.label }}
-			{{ form.photo }}
-		</p>
-		<div class="drag-drop"><p>
+		<div class="drag-drop">{{ form.photo }}
+		</div></p>
+		<p>
 			{{ form.medical_documents.label }}
-			{{ form.medical_documents }}
-		</p></div>
+		<div class="drag-drop">	{{ form.medical_documents }}
+		</div></p>
 		<p>
 			{{ form.fiv_tested.label }}
 			{{ form.fiv_tested(size=3) }}
@@ -107,7 +106,7 @@
 			{{ form.urgent() }}
 			
 		</p>
-		<p>{{ form.submit() }}</p>
+		<p style="position: absolute; right: 0;"><input id="submit" name="submit" type="submit" value="Save & Add New"></p>
 	</form>
 {% endblock %}
 
