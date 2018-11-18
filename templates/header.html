@@ -11,17 +11,16 @@
       <link rel="stylesheet" href="{{ url_for('static', filename='css/catalist.css') }}">
     </head>
     <body>
-        <div class="header">
+        <div class="section header">
             <div class="container">
-                    <div><img src="{{ url_for('static', filename='img/logo.svg') }}" width="120px"></div>
+                <div><img src="{{ url_for('static', filename='img/logo.svg') }}" width="120px"></div>
+                <hr>
             </div>
         </div>
-        <div class="container body">
-            <section class="header">
-                
-            </section>
-            <hr>
-            {% block content %}{% endblock %}
+        <div class="section body">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
         </div>
     </body>
 </html>
