@@ -1,0 +1,15 @@
+h7-underline {
+    text-decoration: underline;
+    margin-bottom: 40px;
+}
+
+.intro {
+	margin-bottom: 40px;
+}
+
+.drag-drop {
+	border: 2px dashed #A7A7A7;
+	margin-bottom: 3.5rem;
+	text-align: center;
+	padding-top: 1.5rem;
+}

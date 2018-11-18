@@ -160,7 +160,7 @@ p {
 a {
   color: #1EAEDB; }
 a:hover {
-  color: #0FA0CE; }
+  color: #34A798; }
 
 
 /* Buttons
@@ -234,7 +234,7 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
-  height: 38px;
+  height: 50px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;
@@ -266,13 +266,14 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid #34A798;
   outline: 0; }
 label,
 legend {
   display: block;
   margin-bottom: .5rem;
-  font-weight: 600; }
+  font-weight: 300; 
+  color: #00558C;}
 fieldset {
   padding: 0;
   border-width: 0; }
@@ -283,6 +284,7 @@ label > .label-body {
   display: inline-block;
   margin-left: .5rem;
   font-weight: normal; }
+
 
 
 /* Lists
