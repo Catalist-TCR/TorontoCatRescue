@@ -1,4 +1,4 @@
-.header{
+.section.header{
     padding-top: 2rem;
     position: sticky;
     background: #fff;
@@ -18,19 +18,20 @@ nav{
 }
 
 nav a:first-child{
-    margin-left: 80px;
+    margin-left: 20px;
 }
 
 nav a{
     display: block;
     float: left;
     /*border: 1px solid #000;*/
-    padding-top: 20px;
+    font-size: 1.5rem;
+    padding-top: 22px;
     padding-right: 10px;
     padding-bottom: 5px;
     padding-left: 10px;
     margin-top: 30px;
-    margin-left: 50px;
+    margin-left: 0px;
     text-decoration: none;
     color: #00558C;
     font-weight: bold;
@@ -42,4 +43,20 @@ nav a:hover{
 
 nav a.link_active{
     border-bottom: 4px solid #34A798;
+}
+
+.section.body{
+    padding-top: 1rem;
+}
+
+@media (min-width: 750px) {
+    nav a:first-child{
+        margin-left: 80px;
+    }
+
+    nav a {
+        margin-left: 50px;
+        size: 2rem;
+    }
+
 }
