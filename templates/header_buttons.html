@@ -1,5 +1,21 @@
 <nav class="nav_links">
+	{% if 'new' in title %}
 	<a class="header_link link_active" href="#">New Request</a>
+	{% else %}
+	<a class="header_link" href="/">New Request</a>
+	{% endif %}
+
+
+	{% if 'data' in title %}
+	<a class="header_link link_active" href="/database">Database</a>
+	{% else %}
 	<a class="header_link" href="/database">Database</a>
+	{% endif %}
+
+
+	{% if 'wait' in title %}
+	<a class="header_link link_active" href="#">Wait List</a>
+	{% else %}
 	<a class="header_link" href="/waitlist">Wait List</a>
+	{% endif %}
 </nav>

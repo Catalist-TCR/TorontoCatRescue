@@ -90,7 +90,7 @@ def shelter_upload():
 	else:
 		print(form.errors)
 		
-	return render_template('shelter_upload.html', form=form)
+	return render_template('shelter_upload.html', form=form, title="new")
 
 @app.route('/intake_upload', methods=['GET', 'POST'])
 def intake_upload():
@@ -148,19 +148,19 @@ def foster_upload():
 		return redirect(url_for('index'))
 	else:
 		print(form.errors)
-	return render_template('foster_upload.html', form=form)
+	return render_template('foster_upload.html', form=form, title="new")
 
 @app.route('/database')
 def database():
 	card = return_database()
 	card.pop(0)
-	return render_template('database.html', cards=card)
+	return render_template('database.html', cards=card, title="data")
 
 @app.route('/waitlist')
 def waitlist():
 	card = return_database()
 	card = [i for i in card if i[20]=="shelter"]
-	return render_template('database.html', cards=card)
+	return render_template('database.html', cards=card, title="wait")
 
 
 @app.route('/')
