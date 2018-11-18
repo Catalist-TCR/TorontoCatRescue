@@ -1,7 +1,7 @@
 .header{
     padding-top: 4rem;
     border-bottom: 1px #000;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .section.header{
@@ -56,6 +56,9 @@ nav a.link_active{
 }
 
 @media (min-width: 750px) {
+    .header{
+        margin-bottom: 70px;
+    }
     nav a:first-child{
         margin-left: 80px;
     }
@@ -65,4 +68,13 @@ nav a.link_active{
         size: 2rem;
     }
 
+}
+
+input[type="text"] {
+    width: 70%;
+}
+
+textarea {
+    width: 70%;
+    height: 150px;
 }
