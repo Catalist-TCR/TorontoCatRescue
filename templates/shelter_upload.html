@@ -5,79 +5,103 @@
 	<form action="" method="post" enctype="multipart/form-data" novalidate >
 		{{ form.hidden_tag() }}
 		{{ form.csrf_token }}
-		<p>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.date.label }}
 			{{ form.date() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.name.label }}
 			{{ form.name() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.date_of_birth.label }}
 			{{ form.date_of_birth() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.age.label }}
 			{{ form.age() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.sex.label }}
 			{{ form.sex() }}
-		</p>		
-		<p>
+		</div>
+		</div>		
+		<div class="row form-element"><div class="ten columns">
 			{{ form.photo.label }}
-			{{ form.photo }}
-		</p>
-		<p>
+			<div class="drag-drop">{{ form.photo }}</div>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.description.label }}
 			{{ form.description() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.sn.label }}
 			{{ form.sn() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.shelter_name.label }}
 			{{ form.shelter_name() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.shelter_id.label }}
 			{{ form.shelter_id() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.fiv_tested.label }}
 			{{ form.fiv_tested() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.flv_tested.label }}
 			{{ form.flv_tested() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.fvrcp_vaccination_date.label }}
 			{{ form.fvrcp_vaccination_date() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.rabies_vaccination_date.label }}
 			{{ form.rabies_vaccination_date() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.medical_notes.label }}
 			{{ form.medical_notes() }}
-		</p>
-		<p>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.medical_documents.label }}
-			{{ form.medical_documents }}
-		</p>
-		<p>
+			<div class="drag-drop">{{ form.medical_documents }}</div>
+		</div>
+		</div>
+		<div class="row form-element"><div class="ten columns">
 			{{ form.behaviour_notes.label }}
 			{{ form.behaviour_notes() }}
-		</p>
-		<p>
-			{{ form.urgent() }}
-			{{ form.urgent.label }}
-		</p>
-		<p>{{ form.submit() }}</p>
+		</div>
+		</div>
+		<div class="row form-element">
+				<label class="form.urgent">
+					<input type="checkbox">
+					<span class="label-body">Urgent</span>
+				</label>
+			</div>
+		</div>
+		<div class="row form-element">
+				<div class="three columns u-pull-right">
+					<input id="submit" name="submit" type="submit" value="Save & Add New">
+				</div>
+			</div>
 	</form>
 {% endblock %}
 
