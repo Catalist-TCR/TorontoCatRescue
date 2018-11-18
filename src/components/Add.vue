@@ -17,44 +17,51 @@
         
         <!-- Sex & Reproductive Ability -->
         <div class="radio-div">
-            <span>Sex</span>
-            <span>
-                <input type="radio" name="gender" value="male"> Male
-            </span>
-            <span>
-                <input type="radio" name="gender" value="male"> Female
-            </span>
-            <br>
-            <span>Spayed/Neutered</span>
-            <span>
-                <input type="radio" name="gender" value="male"> Yes
-            </span>
-            <span>
-                <input type="radio" name="gender" value="male"> No
-            </span>
-            <br>
+            <fieldset id="sex" form="main" name="sex">
+                <legend>Sex</legend>
+                <span>
+                    <input type="radio" name="gender" value="male" v-model="sex"> Male
+                </span>
+                <span>
+                    <input type="radio" name="gender" value="male" v-model="sex"> Female
+                </span>
+                <br>
+            </fieldset>
+            <fieldset id="reproductive">
+                <legend>Spayed/Neutered</legend>
+                <span>
+                    <input type="radio" name="gender" value="yes" :name="reproductive"> Yes
+                </span>
+                <span>
+                    <input type="radio" name="gender" value="no" :name="reproductive"> No
+                </span>
+                <br>
+            </fieldset>
         </div>
 
         <!-- Disease & Testing -->
         <div class="radio-div">
-            <span>FIV</span>
-            <span>
-                <input type="radio" name="gender" value="male"> Male
-            </span>
-            <span>
-                <input type="radio" name="gender" value="male"> Female
-            </span>
-            <br>
-            <span>FLV</span>
-            <span>
-                <input type="radio" name="gender" value="male"> Yes
-            </span>
-            <span>
-                <input type="radio" name="gender" value="male"> No
-            </span>
-            <br>
+            <fieldset id='fiv'>
+                <legend>FIV</legend>
+                <span>
+                    <input type="radio" name="gender" value="yes" :name="fiv"> Yes
+                </span>
+                <span>
+                    <input type="radio" name="gender" value="no" :name="fiv"> No
+                </span>
+                <br>
+            </fieldset>
+            <fieldset id='flv'>
+                <legend>FLV</legend>
+                <span>
+                    <input type="radio" name="gender" value="yes" :name="flv"> Yes
+                </span>
+                <span>
+                    <input type="radio" name="gender" value="no" :name="flv"> No
+                </span>
+                <br>
+            </fieldset>
         </div>
-
 
         <button type="submit">Submit</button>
     </form>
@@ -94,12 +101,12 @@ a {
     justify content: center;
     align-items: end;
 }
-.radio-div{
+fieldset{
     display: flex;
     flex-direction: column;
     justify content: center;
-    align-items: end;
-    align-self: end
+    text-align: left;
+    border: none;
 }
 #main{
     display: flex;
