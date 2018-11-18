@@ -69,3 +69,9 @@ def input_data(form, permission):
 		wks.update_cell(index, 22, 'shelter')
 	elif permission is 'intake':
 		wks.update_cell(index, 22, 'intake')
+	wks.update_cell(index, 23, form.foster_coordinator.data)
+	wks.update_cell(index, 24, form.foster_parent.data)
+
+def return_database():
+	wks = gc.open("Catalist").sheet1
+	return wks.get_all_values()

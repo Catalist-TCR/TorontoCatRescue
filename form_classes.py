@@ -35,6 +35,8 @@ class CatInformation(FlaskForm):
 	intake_date = DateField('Intake Date', format='%Y-%m-%d')
 	#FOSTER HOME
 	foster_placement_date = DateField('Placement Date', format='%Y-%m-%d')
+	foster_coordinator = StringField('Foster Coordinator')
+	foster_parent = StringField('Foster Parent')
 	location = StringField('Location')
 	
 	submit = SubmitField('Submit')
