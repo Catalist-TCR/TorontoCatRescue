@@ -1,8 +1,7 @@
 {% extends "header.html" %}
 
 {% block content %}
-	<div class="intro">
-	<h7 >To submit a request to Toronto Cat Rescue, fill out the form below or add multiple cats by importing a <h7-underline>Google Sheet</h7-underline>, <h7-underline>Excel file</h7-underline>, or <h7-underline>CSV file</h7-underline>.</h7></div>
+	<div class="intro">To submit a request to Toronto Cat Rescue, fill out the form below or add multiple cats by importing a <span class="underline">Google Sheet</span>, <span class="underline">Excel file</span>, or <span class="underline">CSV file</span>.</div>
 	<form action="" method="post" enctype="multipart/form-data" novalidate >
 		{{ form.hidden_tag() }}
 		{{ form.csrf_token }}
@@ -12,56 +11,56 @@
 		</p> -->
 		<p>
 			{{ form.petpoint_id.label }}
-			{{ form.petpoint_id(size=80) }}
+			{{ form.petpoint_id() }}
 		</p>
 		<p>
 			{{ form.outcome.label }}
-			{{ form.outcome(size=80) }}
+			{{ form.outcome() }}
 		</p>
 		<p>
 			{{ form.intake_date.label }}
-			{{ form.intake_date(size=80) }}
+			{{ form.intake_date() }}
 		</p>
 		<p>
 			{{ form.foster_placement_date.label }}
-			{{ form.foster_placement_date(size=80) }}
+			{{ form.foster_placement_date() }}
 		</p>
 		<p>
 			{{ form.location.label }}
-			{{ form.location(size=80) }}
+			{{ form.location() }}
 		</p>
 		<hr class="style1">
 		<p>
 			{{ form.shelter_name.label }}
-			{{ form.shelter_name(size=80) }}
+			{{ form.shelter_name() }}
 		</p>
 		<p>
 			{{ form.shelter_id.label }}
-			{{ form.shelter_id(size=80) }}
+			{{ form.shelter_id() }}
 		</p>
 		<p>
 			{{ form.name.label }}
-			{{ form.name(size=80) }}
+			{{ form.name() }}
 		</p>
 		<p>
 			{{ form.date_of_birth.label }}
-			{{ form.date_of_birth(size=80) }}
+			{{ form.date_of_birth() }}
 		</p>
 		<p>
 			{{ form.age.label }}
-			{{ form.age(size=32) }}
+			{{ form.age() }}
 		</p>
 		<p>
 			{{ form.sex.label }}
-			{{ form.sex(size=2) }}
+			{{ form.sex() }}
 		</p>		
 		<p>
 			{{ form.sn.label }}
-			{{ form.sn(size=2) }}
+			{{ form.sn() }}
 		</p>
 		<p>
 			{{ form.description.label }}
-			{{ form.description(size=80) }}
+			{{ form.description() }}
 		</p>
 		<p>
 			{{ form.photo.label }}
@@ -73,28 +72,28 @@
 		</div></p>
 		<p>
 			{{ form.fiv_tested.label }}
-			{{ form.fiv_tested(size=3) }}
+			{{ form.fiv_tested() }}
 		</p>
 		<p>
 			{{ form.flv_tested.label }}
-			{{ form.flv_tested(size=3) }}
+			{{ form.flv_tested() }}
 		</p>
 		<p>
 			{{ form.fvrcp_vaccination_date.label }}
-			{{ form.fvrcp_vaccination_date(size=80) }}
+			{{ form.fvrcp_vaccination_date() }}
 		</p>
 		<p>
 			{{ form.rabies_vaccination_date.label }}
-			{{ form.rabies_vaccination_date(size=80) }}
+			{{ form.rabies_vaccination_date() }}
 		</p>
 		<p>
 			{{ form.medical_notes.label }}
-			{{ form.medical_notes(size=80) }}
+			{{ form.medical_notes() }}
 		</p>
 		
 		<p>
 			{{ form.behaviour_notes.label }}
-			{{ form.behaviour_notes(size=80) }}
+			{{ form.behaviour_notes() }}
 		</p>
 		<p>
 			<label class="form.urgent">
