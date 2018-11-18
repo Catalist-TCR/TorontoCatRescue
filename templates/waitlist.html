@@ -7,8 +7,8 @@
   <meta content="ie=edge" http-equiv="x-ua-compatible">
   <title>Waitlist</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-  <link href="css/normalize.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css-database/normalize.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css-database/main.css')}}" rel="stylesheet">
   <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 </head>
 
@@ -16,7 +16,7 @@
   <div id="box">
     <h1>Waitlist</h1>
     <h3>Select row to highlight</h3>
-    <script src="js/google-sheets-html-waitlist.js" type="text/javascript"></script>
+      <script src="{{ url_for('static', filename='js/google-sheets-html-waitlist.js') }}" type="text/javascript"></script>
     <div id="table">
     </div>
      <br>

@@ -150,6 +150,15 @@ def foster_upload():
 		print(form.errors)
 	return render_template('foster_upload.html', form=form)
 
+@app.route('/database')
+def database():
+	return render_template('database.html')
+
+@app.route('/waitlist')
+def waitlist():
+	return render_template('waitlist.html')
+
+
 @app.route('/')
 def index():
 	
