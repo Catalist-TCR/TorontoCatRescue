@@ -29,7 +29,7 @@ ul {
     align-items: flex-end;
     justify-content: space-around;
     margin: 0 25%;
-    height: 70px;
+    height: 60px;
     border-bottom: solid grey 3px;
     padding-bottom: 10px;
 }

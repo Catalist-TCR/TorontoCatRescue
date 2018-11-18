@@ -1,15 +1,23 @@
 <template>
   <main id="waitlist">
     <p>Waitlisted Cats</p>
+    <Card />
+    <Card />
+    <Card />
+    <Card />
     <button type="submit">Submit</button>
   </main>
 </template>
 
 <script>
+import Card from './Card.vue';
 
 //this is to export variables here, to be passed up to parent files
 export default {
   name: 'Waitlist',
+  components: {
+    Card
+  },
 }
 </script>
 
@@ -44,5 +52,8 @@ a {
 input[type=radio] {
     width: 30px;
     height: 2em;
+}
+#waitlist{
+    grid-column: 2;
 }
 </style>

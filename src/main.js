@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Welcome from './components/Welcome.vue';
 import Add from './components/Add.vue';
+import Waitlist from './components/Waitlist.vue';
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,7 @@ const router = new VueRouter({
     { path: '/', component: Welcome },
     { path: '/login', component: Welcome },
     { path: '/add', component: Add },
+    { path: '/waitlist', component: Waitlist },
   ]
 })
 
