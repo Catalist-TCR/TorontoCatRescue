@@ -1,3 +1,36 @@
 .header{
     padding-top: 4rem;
+    border-bottom: 1px #000;
+}
+
+.logo{
+    width: 120px;
+    float: left;
+}
+
+nav{
+    width: 100%;
+}
+
+nav a:first-child{
+    margin-left: 80px;
+}
+
+nav a{
+    display: block;
+    float: left;
+    /*border: 1px solid #000;*/
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    margin-top: 30px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: #00558C;
+    font-weight: bold;
+}
+
+nav a:hover{
+
 }
