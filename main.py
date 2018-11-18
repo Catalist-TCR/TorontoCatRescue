@@ -1,7 +1,7 @@
 from flask import Flask, session, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from form_classes import LoginForm, CatInformation
-from google_sheets import find_permission, input_data
+from google_sheets import find_permission, input_data, return_database
 import os
 from flask_oauth import OAuth
 from flask_wtf import CsrfProtect
@@ -152,7 +152,9 @@ def foster_upload():
 
 @app.route('/database')
 def database():
-	return render_template('database.html')
+	card = return_database()
+	card.pop(0)
+	return render_template('database.html', cards=card)
 
 @app.route('/waitlist')
 def waitlist():

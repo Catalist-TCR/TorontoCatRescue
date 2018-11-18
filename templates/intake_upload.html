@@ -1,29 +1,29 @@
 {% extends "header.html" %}
 
 {% block content %}
-	<h7>To submit a request to Toronto Cat Rescue, fill out the form below or add multiple cats by importing a Google Sheet, Excel file, or CSV file.</h1>
+<div class="intro">To submit a request to Toronto Cat Rescue, fill out the form below or add multiple cats by importing a <span class="underline">Google Sheet</span>, <span class="underline">Excel file</span>, or <span class="underline">CSV file</span>.</div>
 	<form action="" method="post" enctype="multipart/form-data" novalidate >
 		{{ form.hidden_tag() }}
 		{{ form.csrf_token }}
 		<p>
 			{{ form.date.label }}
-			{{ form.date(size=32) }}
+			{{ form.date() }}
 		</p>
 		<p>
 			{{ form.name.label }}
-			{{ form.name(size=32) }}
+			{{ form.name() }}
 		</p>
 		<p>
 			{{ form.date_of_birth.label }}
-			{{ form.date_of_birth(size=32) }}
+			{{ form.date_of_birth() }}
 		</p>
 		<p>
 			{{ form.age.label }}
-			{{ form.age(size=32) }}
+			{{ form.age() }}
 		</p>
 		<p>
 			{{ form.sex.label }}
-			{{ form.sex(size=2) }}
+			{{ form.sex() }}
 
 		</p>		
 		<p>
@@ -32,39 +32,39 @@
 		</p>
 		<p>
 			{{ form.description.label }}
-			{{ form.description(size=42) }}
+			{{ form.description() }}
 		</p>
 		<p>
 			{{ form.sn.label }}
-			{{ form.sn(size=2) }}
+			{{ form.sn() }}
 		</p>
 		<p>
 			{{ form.shelter_name.label }}
-			{{ form.shelter_name(size=32) }}
+			{{ form.shelter_name() }}
 		</p>
 		<p>
 			{{ form.shelter_id.label }}
-			{{ form.shelter_id(size=32) }}
+			{{ form.shelter_id() }}
 		</p>
 		<p>
 			{{ form.fiv_tested.label }}
-			{{ form.fiv_tested(size=3) }}
+			{{ form.fiv_tested() }}
 		</p>
 		<p>
 			{{ form.flv_tested.label }}
-			{{ form.flv_tested(size=3) }}
+			{{ form.flv_tested() }}
 		</p>
 		<p>
 			{{ form.fvrcp_vaccination_date.label }}
-			{{ form.fvrcp_vaccination_date(size=32) }}
+			{{ form.fvrcp_vaccination_date() }}
 		</p>
 		<p>
 			{{ form.rabies_vaccination_date.label }}
-			{{ form.rabies_vaccination_date(size=32) }}
+			{{ form.rabies_vaccination_date() }}
 		</p>
 		<p>
 			{{ form.medical_notes.label }}
-			{{ form.medical_notes(size=42) }}
+			{{ form.medical_notes() }}
 		</p>
 		<p>
 			{{ form.medical_documents.label }}
@@ -72,7 +72,7 @@
 		</p>
 		<p>
 			{{ form.behaviour_notes.label }}
-			{{ form.behaviour_notes(size=42) }}
+			{{ form.behaviour_notes() }}
 		</p>
 		<p>
 			{{ form.urgent() }}
@@ -80,18 +80,96 @@
 		</p>
 		<p>
 			{{ form.petpoint_id.label }}
-			{{ form.petpoint_id(size=32) }}
+			{{ form.petpoint_id() }}
 		</p>
 		<p>
 			{{ form.outcome.label }}
-			{{ form.outcome(size=32) }}
+			{{ form.outcome() }}
 		</p>
 		<p>
 			{{ form.intake_date.label }}
-			{{ form.intake_date(size=32) }}
+			{{ form.intake_date() }}
 		</p>
 		<p>{{ form.submit() }}</p>
 	</form>
+
+
+	<div class="card-container">
+		<div class="image">
+			<img class="kitty-image" src="../static/img/cat1.jpg" />
+		</div>
+		<div class="personal-details">
+			<h2 style="font-size: 18px;">Hugely Big</h2>
+			<p><b>22/06/2042</b></p>
+			<p><b>Male</b></p>
+			<span>S/N: <span><b>No</b></span></span>
+			<div id="medical">
+				<legend>Medical Documents:</legend>
+				<a href="#">attachment 1</a>
+				<br/>
+				<a href="#">attachment 2</a>
+			</div>
+		</div>
+		<div class="extra-info">
+			<p><span>Requested Date:</span><b>Date</b></p>
+			<p><span> FIV: </span><b>test result</b></p>
+			<p><span> FLV: </span><b>test result</b></p>
+			<p><span> FVRCP Vaccination: </span><b>test result</b></p>
+			<p><span> Rabies Vaccination: </span><b>test result</b></p>
+			<p><span> Medical Description: </span><b>test result</b></p>
+			<p><span> Behaviour Description: </span><b>test result</b></p>
+		</div>
+		<img id="edit-cat-info" src="" />
+	</div>
+
+		
+<style>
+
+.card-container{
+  display: grid;
+  grid-template-columns: 150px 1fr 2fr;
+  grid-gap: 10px;
+  max-width: 60%;
+  background-color: #fff;
+  color: #444;
+  font-size: 14px;
+}
+
+#medical a{
+    margin-left: 20%;
+    color: #00558C;
+}
+
+.card-container p{
+    margin: 5px 0;
+}
+
+.card-container div{
+  background-color: white;
+  color: black;
+}
+
+.kitty-image{
+    max-width: 150px;
+}
+
+.personal-details, .extra-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: end;
+    max-height: 200px;
+}
+
+.personal-details h2{
+    color: #00558C;
+    margin: 0;
+}
+
+</style>
+
+
+
 {% endblock %}
 
 
