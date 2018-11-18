@@ -125,4 +125,7 @@ input[type=radio] {
     width: 30px;
     height: 2em;
 }
+button{
+    align-self: center;
+}
 </style>

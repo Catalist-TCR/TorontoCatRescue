@@ -48,10 +48,12 @@ ul {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-end;
-    width: 100%;
+    width: 50%;
     margin: 0;
     padding: 0;
     height: 70px;
+    top: 0;
+    position: absolute;
 }
 #navigation li{
     display: inline;
