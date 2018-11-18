@@ -33,7 +33,7 @@ google = oauth.remote_app('google',
 
 
 
-STATIC_URL_PATH = '/static/'
+STATIC_URL_PATH = '/static'
 app = Flask(__name__, static_url_path=STATIC_URL_PATH)
 app.config['SECRET_KEY'] = 'cats'
 
