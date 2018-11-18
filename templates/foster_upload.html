@@ -1,28 +1,28 @@
 {% extends "header.html" %}
 
 {% block content %}
-	<h1>Add a cat</h1>
+	<h7>To submit a request to Toronto Cat Rescue, fill out the form below or add multiple cats by importing a Google Sheet, Excel file, or CSV file.</h7>
 	<form action="" method="post" enctype="multipart/form-data" novalidate >
 		{{ form.hidden_tag() }}
 		{{ form.csrf_token }}
 		<p>
-			{{ form.date.label }}<br>
+			{{ form.date.label }}
 			{{ form.date(size=32) }}
 		</p>
 		<p>
-			{{ form.name.label }}<br>
+			{{ form.name.label }}
 			{{ form.name(size=32) }}
 		</p>
 		<p>
-			{{ form.date_of_birth.label }}<br>
+			{{ form.date_of_birth.label }}
 			{{ form.date_of_birth(size=32) }}
 		</p>
 		<p>
-			{{ form.age.label }}<br>
+			{{ form.age.label }}
 			{{ form.age(size=32) }}
 		</p>
 		<p>
-			{{ form.sex.label }}<br>
+			{{ form.sex.label }}
 			{{ form.sex(size=2) }}
 
 		</p>		
@@ -31,39 +31,39 @@
 			{{ form.photo }}
 		</p>
 		<p>
-			{{ form.description.label }}<br>
+			{{ form.description.label }}
 			{{ form.description(size=42) }}
 		</p>
 		<p>
-			{{ form.sn.label }}<br>
+			{{ form.sn.label }}
 			{{ form.sn(size=2) }}
 		</p>
 		<p>
-			{{ form.shelter_name.label }}<br>
+			{{ form.shelter_name.label }}
 			{{ form.shelter_name(size=32) }}
 		</p>
 		<p>
-			{{ form.shelter_id.label }}<br>
+			{{ form.shelter_id.label }}
 			{{ form.shelter_id(size=32) }}
 		</p>
 		<p>
-			{{ form.fiv_tested.label }}<br>
+			{{ form.fiv_tested.label }}
 			{{ form.fiv_tested(size=3) }}
 		</p>
 		<p>
-			{{ form.flv_tested.label }}<br>
+			{{ form.flv_tested.label }}
 			{{ form.flv_tested(size=3) }}
 		</p>
 		<p>
-			{{ form.fvrcp_vaccination_date.label }}<br>
+			{{ form.fvrcp_vaccination_date.label }}
 			{{ form.fvrcp_vaccination_date(size=32) }}
 		</p>
 		<p>
-			{{ form.rabies_vaccination_date.label }}<br>
+			{{ form.rabies_vaccination_date.label }}
 			{{ form.rabies_vaccination_date(size=32) }}
 		</p>
 		<p>
-			{{ form.medical_notes.label }}<br>
+			{{ form.medical_notes.label }}
 			{{ form.medical_notes(size=42) }}
 		</p>
 		<p>
@@ -71,31 +71,31 @@
 			{{ form.medical_documents }}
 		</p>
 		<p>
-			{{ form.behaviour_notes.label }}<br>
+			{{ form.behaviour_notes.label }}
 			{{ form.behaviour_notes(size=42) }}
 		</p>
 		<p>
-			{{ form.urgent() }}<br>
+			{{ form.urgent() }}
 			{{ form.urgent.label }}
 		</p>
 		<p>
-			{{ form.petpoint_id.label }}<br>
+			{{ form.petpoint_id.label }}
 			{{ form.petpoint_id(size=32) }}
 		</p>
 		<p>
-			{{ form.outcome.label }}<br>
+			{{ form.outcome.label }}
 			{{ form.outcome(size=32) }}
 		</p>
 		<p>
-			{{ form.intake_date.label }}<br>
+			{{ form.intake_date.label }}
 			{{ form.intake_date(size=32) }}
 		</p>
 		<p>
-			{{ form.foster_placement_date.label }}<br>
+			{{ form.foster_placement_date.label }}
 			{{ form.foster_placement_date(size=32) }}
 		</p>
 		<p>
-			{{ form.location.label }}<br>
+			{{ form.location.label }}
 			{{ form.location(size=3) }}
 		</p>
 		<p>{{ form.submit() }}</p>
