@@ -159,7 +159,7 @@ def database():
 @app.route('/waitlist')
 def waitlist():
 	card = return_database()
-	card = [i in card if card[21] == "shelter"]
+	card = [i for i in card if i[21]=="shelter"]
 	card.pop(0)
 	return render_template('database.html', cards=card)
 
