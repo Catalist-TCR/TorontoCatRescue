@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Catalist" src="../images/TCR-Logo.svg">
+    <Header v-if="main()" />
     <router-view>
         <Welcome />
     </router-view>
@@ -10,6 +10,7 @@
 <script>
 import Welcome from './components/Welcome.vue';
 import Add from './components/Add.vue';
+import Header from './components/Header.vue';
 
 const routes = [
   { path: '/login', component: Welcome },
@@ -18,8 +19,14 @@ const routes = [
 
 export default {
   name: 'app',
+  methods: {
+    main: function () {
+      return this.$route.path.length != 1 && this.$route.path.indexOf('login') == -1;
+    }
+  },
   components: {
-    Welcome
+    Welcome,
+    Header
   }
 }
 
@@ -32,10 +39,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-#app img {
-  width: 50%;
-  max-width: 300px;
+  margin: 60px 10% 0 10%;
 }
 </style>

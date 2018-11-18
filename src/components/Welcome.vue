@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div class="welcome">
+    <img alt="Catalist" src="../../images/TCR-Logo.svg">
     <h1>Welcome to Catalist</h1>
       <Login />
   </div>
@@ -35,5 +36,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.welcome img {
+  width: 50%;
+  max-width: 300px;
 }
 </style>
