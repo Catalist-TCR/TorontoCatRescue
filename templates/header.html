@@ -1,14 +1,26 @@
 <html>
     <head>
       {% if title %}
-      <title>{{ title }} - Cat a list </title>
+      <title>{{ title }} - Catalist</title>
       {% else %}
-      <title>Cat a list</title>
+      <title>Catalist</title>
       {% endif %}
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/catalist.css') }}">
     </head>
     <body>
-        <div>Microblog: <a href="/index">Home</a></div>
-        <hr>
-        {% block content %}{% endblock %}
+        <div class="section header">
+            <div class="container">
+                <div><img src="{{ url_for('static', filename='img/logo.svg') }}" width="120px"></div>
+                <hr>
+            </div>
+        </div>
+        <div class="section body">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </body>
 </html>

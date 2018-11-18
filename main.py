@@ -177,6 +177,7 @@ def index():
 	# return render_template('index.html', title='Sign In', form=form)
 
 if __name__ == '__main__':
+	app.jinja_env.auto_reload = True
 	app.run(debug=True)
 
 
