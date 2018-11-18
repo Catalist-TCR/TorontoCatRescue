@@ -1,26 +1,17 @@
 <template>
   <div id="header" class="sticky">
     <img id="logo-image" alt="Catalist" src="../../images/TCR-Logo.svg">
-        <ul id="navigation">
-            <li>New Request</li>
-            <li>Waitlist</li>
-        </ul>
+    <a href="/add">New Request</a>
+    <a href="/waitlist">Waitlist</a>
   </div>
 </template>
 
 <script>
 
-// document.addEventListener("DOMContentLoaded", function(){
-//     if (document.getElementsByClassName("welcome")){
-//         document.getElementById('header').style.display = 'none';
-//     }
-// });
-
 export default {
-  name: 'Header',
-  props: {
-
-  }
+  name: 'header',
+  // props: {
+  // }
 }
 </script>
 
@@ -35,28 +26,17 @@ ul {
 #header{
     display: flex;
     flex-direction: row;
-    justify content: center;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: space-around;
     margin: 0 25%;
     height: 70px;
     border-bottom: solid grey 3px;
     padding-bottom: 10px;
+}
 
-}
-#navigation{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-end;
-    width: 50%;
-    margin: 0;
-    padding: 0;
-    height: 70px;
-    top: 0;
-    position: absolute;
-}
-#navigation li{
-    display: inline;
+#header a{
+  text-decoration: none;
+  color: black;
 }
 
 </style>

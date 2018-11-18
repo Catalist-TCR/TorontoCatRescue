@@ -16,10 +16,9 @@
 <script>
 
 export default {
-  name: 'Login',
-  props: {
-
-  }
+  name: 'login',
+  // props: {
+  // }
 }
 </script>
 

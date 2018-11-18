@@ -1,20 +1,15 @@
 <template>
-  <div class="welcome">
-    <img alt="Catalist" src="../../images/TCR-Logo.svg">
-    <h1>Welcome to Catalist</h1>
-      <Login />
-  </div>
+  <main id="waitlist">
+    <p>Waitlisted Cats</p>
+    <button type="submit">Submit</button>
+  </main>
 </template>
 
 <script>
-import Login from './Login.vue';
 
 //this is to export variables here, to be passed up to parent files
 export default {
-  name: 'welcome',
-  components: {
-    Login
-  },
+  name: 'Waitlist',
 }
 </script>
 
@@ -34,11 +29,20 @@ li {
 a {
   color: #42b983;
 }
-.welcome img {
-  width: 50%;
-  max-width: 300px;
+.text-input{
+    display: block;
 }
-.welcome{
-  grid-column: 2;
+#add-cat{
+    display: flex;
+    flex-direction: column;
+    justify content: center;
+    align-items: end;
+}
+#main label, #main span {
+    color: #34A798;
+}
+input[type=radio] {
+    width: 30px;
+    height: 2em;
 }
 </style>

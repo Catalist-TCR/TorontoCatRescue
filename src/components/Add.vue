@@ -20,20 +20,20 @@
             <fieldset id="sex" form="main" name="sex">
                 <legend>Sex</legend>
                 <span>
-                    <input type="radio" name="gender" value="male" v-model="sex"> Male
+                    <input type="radio" name="sex" value="male" v-model="sex"> Male
                 </span>
                 <span>
-                    <input type="radio" name="gender" value="male" v-model="sex"> Female
+                    <input type="radio" name="sex" value="male" v-model="sex"> Female
                 </span>
                 <br>
             </fieldset>
             <fieldset id="reproductive">
                 <legend>Spayed/Neutered</legend>
                 <span>
-                    <input type="radio" name="gender" value="yes" :name="reproductive"> Yes
+                    <input type="radio" name="reproduction" value="yes"> Yes
                 </span>
                 <span>
-                    <input type="radio" name="gender" value="no" :name="reproductive"> No
+                    <input type="radio" name="reproduction" value="no" > No
                 </span>
                 <br>
             </fieldset>
@@ -44,20 +44,20 @@
             <fieldset id='fiv'>
                 <legend>FIV</legend>
                 <span>
-                    <input type="radio" name="gender" value="yes" :name="fiv"> Yes
+                    <input type="radio" name="fiv" value="yes"> Yes
                 </span>
                 <span>
-                    <input type="radio" name="gender" value="no" :name="fiv"> No
+                    <input type="radio" name="fiv" value="no" > No
                 </span>
                 <br>
             </fieldset>
             <fieldset id='flv'>
                 <legend>FLV</legend>
                 <span>
-                    <input type="radio" name="gender" value="yes" :name="flv"> Yes
+                    <input type="radio" name="flv" value="yes" > Yes
                 </span>
                 <span>
-                    <input type="radio" name="gender" value="no" :name="flv"> No
+                    <input type="radio" name="flv" value="no" > No
                 </span>
                 <br>
             </fieldset>
@@ -72,7 +72,7 @@
 
 //this is to export variables here, to be passed up to parent files
 export default {
-  name: 'Add',
+  name: 'add',
 }
 </script>
 
@@ -108,24 +108,11 @@ fieldset{
     text-align: left;
     border: none;
 }
-#main{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
 #main label, #main span {
     color: #34A798;
-}
-input{
-    border-radius: 5px;
-    border:1px solid #cccccc
 }
 input[type=radio] {
     width: 30px;
     height: 2em;
-}
-button{
-    align-self: center;
 }
 </style>
