@@ -15,9 +15,9 @@ class CatInformation(FlaskForm):
 	name = StringField('Cat Name', validators=[DataRequired()])
 	date_of_birth = DateField('Date of Birth', format='%Y-%m-%d')
 	age = StringField('Age')
-	sex = SelectField('Sex', choices=[('m', 'M'),('f', 'F')])
+	sex = SelectField('Sex', choices=[('M', 'M'),('F', 'F')])
 	description = TextAreaField('Description')
-	sn = SelectField('S/N', choices=[('y','Yes'),('n','No')])
+	sn = SelectField('S/N', choices=[('Yes','Yes'),('No','No')])
 	shelter_name = StringField('Shelter Name')
 	shelter_id = StringField('Shelter ID')
 	photo = FileField('Cat Photo')
@@ -38,17 +38,7 @@ class CatInformation(FlaskForm):
 	location = StringField('Location')
 	
 	submit = SubmitField('Submit')
-'''
-	def __dict__(self): 
-		def _try(o): 
-			try: 
-				return o.__dict__ 
-			except: 
-				return str(o)
 
-	def toJSON(self):
-		return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
-'''
 
 '''
 

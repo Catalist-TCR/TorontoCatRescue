@@ -6,6 +6,7 @@
  * URL below with your own unique Google document ID
  * 
  * The Google document's sharing must be set to public
+ * https://docs.google.com/spreadsheets/d/1eUSuEzqmmaum5nPLBF6svEw3aD0vBC0Np-ykqfm2SLs/edit?usp=sharing
  * 
  */
 
@@ -16,7 +17,7 @@ var visualization;
 
 function drawVisualization() {
     var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1eUSuEzqmmaum5nPLBF6svEw3aD0vBC0Np-ykqfm2SLs&output=html&usp=sharing');
-    query.setQuery('SELECT A, B, C, D, E, F, G, H where U ="shelter" label A "Date", B "Cat Name", C "Date of Birth", D "Age", E "Sex", F "Description", G "Spay/Neuter", H "Shelter Name"');
+    query.setQuery('SELECT A, B, C, D, E, F, G, H where U = "shelter" label A "Date", B "Cat Name", C "Date of Birth", D "Age", E "Sex", F "Description", G "Spay/Neuter", H "Shelter Name"');
     query.send(handleQueryResponse);
 }
 
