@@ -1,13 +1,15 @@
 from flask import Flask, session, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from form_classes import LoginForm, CatInformation
-from google_sheets import find_permission
+from google_sheets import find_permission, input_data
 import os
 from flask_oauth import OAuth
+from flask_wtf import CsrfProtect
 import sys
 import requests
 import config
 
+csrf = CsrfProtect()
 
 GOOGLE_CLIENT_ID = config.OAUTH_CONFIG['GOOGLE_CLIENT_ID']
 GOOGLE_CLIENT_SECRET = config.OAUTH_CONFIG['GOOGLE_CLIENT_SECRET']
@@ -72,15 +74,22 @@ def shelter_upload():
 
 	form = CatInformation()
 	if form.validate_on_submit():
-		pho = form.photo.data
-		filename = secure_filename(f.filename)
-		f.save(os.path.join(app.instance_path, 'photos', filename))
+		input_data(form, 'shelter')
 
-		med_docs = form.medical_notes.data
-		filename = secure_filename(f.filename)
-		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		if form.photo.data is not None:
+			pho = form.photo.data
+			filename = secure_filename(pho.filename)
+			pho.save(os.path.join(app.instance_path, 'photos', filename))
 
+		if form.medical_documents.data is not None:
+			med_docs = form.medical_documents.data
+			filename = secure_filename(med_docs.filename)
+			med_docs.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		
 		return redirect(url_for('index'))
+	else:
+		print(form.errors)
+		
 	return render_template('shelter_upload.html', form=form)
 
 @app.route('/intake_upload', methods=['GET', 'POST'])
@@ -94,15 +103,22 @@ def intake_upload():
 
 	form = CatInformation()
 	if form.validate_on_submit():
-		pho = form.photo.data
-		filename = secure_filename(f.filename)
-		f.save(os.path.join(app.instance_path, 'photos', filename))
+		input_data(form, 'intake')
+		
+		if form.photo.data is not None:
+			pho = form.photo.data
+			filename = secure_filename(pho.filename)
+			pho.save(os.path.join(app.instance_path, 'photos', filename))
 
-		med_docs = form.medical_notes.data
-		filename = secure_filename(f.filename)
-		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
-
+		if form.medical_documents.data is not None:
+			med_docs = form.medical_documents.data
+			filename = secure_filename(med_docs.filename)
+			med_docs.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		
 		return redirect(url_for('index'))
+	else:
+		print(form.errors)
+
 	return render_template('intake_upload.html', form=form)
 
 @app.route('/foster_upload', methods=['GET', 'POST'])
@@ -117,15 +133,21 @@ def foster_upload():
 
 	form = CatInformation()
 	if form.validate_on_submit():
-		pho = form.photo.data
-		filename = secure_filename(f.filename)
-		f.save(os.path.join(app.instance_path, 'photos', filename))
+		input_data(form, 'foster')
+		
+		if form.photo.data is not None:
+			pho = form.photo.data
+			filename = secure_filename(pho.filename)
+			pho.save(os.path.join(app.instance_path, 'photos', filename))
 
-		med_docs = form.medical_notes.data
-		filename = secure_filename(f.filename)
-		f.save(os.path.join(app.instance_path, 'medical_documents', filename))
-
+		if form.medical_documents.data is not None:
+			med_docs = form.medical_documents.data
+			filename = secure_filename(med_docs.filename)
+			med_docs.save(os.path.join(app.instance_path, 'medical_documents', filename))
+		
 		return redirect(url_for('index'))
+	else:
+		print(form.errors)
 	return render_template('foster_upload.html', form=form)
 
 @app.route('/')
@@ -155,6 +177,7 @@ def index():
 	# return render_template('index.html', title='Sign In', form=form)
 
 if __name__ == '__main__':
+	app.jinja_env.auto_reload = True
 	app.run(debug=True)
 
 

@@ -4,6 +4,7 @@
 	<h1>Add a cat</h1>
 	<form action="" method="post" enctype="multipart/form-data" novalidate >
 		{{ form.hidden_tag() }}
+		{{ form.csrf_token }}
 		<p>
 			{{ form.date.label }}<br>
 			{{ form.date(size=32) }}
