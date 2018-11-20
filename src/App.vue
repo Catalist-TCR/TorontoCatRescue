@@ -4,12 +4,14 @@
     <router-view>
         <Welcome />
     </router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Welcome from './components/Welcome.vue';
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 import Add from './components/Add.vue';
 import Waitlist from './components/Waitlist.vue';
 
@@ -30,6 +32,7 @@ export default {
     Welcome,
     Header,
     Waitlist,
+    Footer,
   }
 }
 
@@ -39,6 +42,7 @@ export default {
 #app {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto auto 50px;
   grid-gap: 10px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,13 +50,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 0 5%;
-}
-
-#header{
-  grid-column: 1 / span 3;
-  position: sticky;
-	top: 0;
-  background-color: white;
 }
 
 main{

@@ -30,8 +30,13 @@ ul {
     justify-content: space-around;
     margin: 0 25%;
     height: 60px;
-    border-bottom: solid grey 3px;
+    border-bottom: solid #A7A7A7 2px;
     padding-bottom: 10px;
+    z-index: 1;
+    grid-column: 1 / span 3;
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
 #header a{

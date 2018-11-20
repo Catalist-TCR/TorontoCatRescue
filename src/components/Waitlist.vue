@@ -1,6 +1,10 @@
 <template>
   <main id="waitlist">
-    <p>Waitlisted Cats</p>
+    <section>
+      <h2>{#} Cats</h2>
+      <p>These cats have been proposed to Toronot Cat Rescue by a shelter, and are currently on the waitlist.</br>You can still edit their information if required.
+      </p>
+    </section>
     <Card />
     <Card />
     <Card />
@@ -55,5 +59,11 @@ input[type=radio] {
 }
 #waitlist{
     grid-column: 2;
+}
+
+#waitlist section{
+  width: 100%;
+  margin-left: 25%;
+  text-align: left;
 }
 </style>
