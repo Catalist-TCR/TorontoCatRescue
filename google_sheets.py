@@ -7,13 +7,13 @@ scope = ['https://spreadsheets.google.com/feeds',
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name('google.auth', scope)
 
-gc = gspread.authorize(credentials)
+#gc = gspread.authorize(credentials)
 
 #sh = gc.create('users')
 #sh.share('illariojane@gmail.com', perm_type='user', role='writer')
 
 def find_permission(user):
-
+	gc = gspread.authorize(credentials)
 	wks = gc.open("users").sheet1
 	all_rows = wks.get_all_values()
 	user_emails = [item[0] for item in all_rows]
@@ -36,6 +36,7 @@ def find_permission(user):
 def input_data(form, permission):
 	print(repr(form))
 	print(form)
+	gc = gspread.authorize(credentials)
 	wks = gc.open("Catalist").sheet1
 	index = len(wks.get_all_values()) + 1
 	wks.update_cell(index, 1, form.date.data.strftime("%B %d, %Y"))
