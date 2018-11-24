@@ -7,7 +7,7 @@ scope = ['https://spreadsheets.google.com/feeds',
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name('google.auth', scope)
 
-#gc = gspread.authorize(credentials)
+gc = gspread.authorize(credentials)
 
 #sh = gc.create('users')
 #sh.share('illariojane@gmail.com', perm_type='user', role='writer')
