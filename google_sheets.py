@@ -7,10 +7,6 @@ scope = ['https://spreadsheets.google.com/feeds',
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name('google.auth', scope)
 
-gc = gspread.authorize(credentials)
-
-#sh = gc.create('users')
-#sh.share('illariojane@gmail.com', perm_type='user', role='writer')
 
 def find_permission(user):
 	gc = gspread.authorize(credentials)
@@ -25,13 +21,8 @@ def find_permission(user):
 		user_index = -1
 
 	if user_index >= 0:
-		#print(user_index, user_permissions[user_index])
 		return user_permissions[user_index]
 
-	#wks.update_acell('B2', "it's down there somewhere, let me take another look.")
-
-	# Fetch a cell range
-	#cell_list = wks.range('A1:B7')
 
 def input_data(form, permission):
 	print(repr(form))
@@ -74,5 +65,6 @@ def input_data(form, permission):
 	wks.update_cell(index, 24, form.foster_parent.data)
 
 def return_database():
+	gc = gspread.authorize(credentials)
 	wks = gc.open("Catalist").sheet1
 	return wks.get_all_values()
