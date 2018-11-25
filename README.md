@@ -7,11 +7,11 @@ Database management and information entry for Toronto Cat Rescue: Gift the Code 
 
 Dependencies:
 
-  - flask
-  - flask-oauth
-  - wtf-flask
-  - gspread
-  - oauth2client
+- flask
+- flask-oauth
+- wtf-flask
+- gspread
+- oauth2client
 
 ## Dev environment setup
 
