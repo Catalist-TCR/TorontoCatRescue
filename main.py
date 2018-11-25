@@ -1,9 +1,10 @@
-from flask import Flask, session, render_template, request, redirect, url_for
+from flask import Flask, session, render_template, request, redirect, url_for, abort
+from flask_dance.consumer import oauth_authorized
+from flask_dance.contrib.google import make_google_blueprint, google
 from werkzeug.utils import secure_filename
 from form_classes import LoginForm, CatInformation
 from google_sheets import find_permission, input_data, return_database
 import os
-from flask_oauth import OAuth
 from flask_wtf import CsrfProtect
 import sys
 import requests
@@ -13,63 +14,30 @@ csrf = CsrfProtect()
 
 GOOGLE_CLIENT_ID = config.OAUTH_CONFIG['GOOGLE_CLIENT_ID']
 GOOGLE_CLIENT_SECRET = config.OAUTH_CONFIG['GOOGLE_CLIENT_SECRET']
-REDIRECT_URI = '/oauth2callback'  # one of the Redirect URIs from Google APIs console
-
-oauth = OAuth()
-google = oauth.remote_app('google',
-						  base_url='https://www.google.com/accounts/',
-						  authorize_url='https://accounts.google.com/o/oauth2/auth',
-						  request_token_url=None,
-						  request_token_params={'scope': 'https://www.googleapis.com/auth/userinfo.email',
-												'response_type': 'code'},
-						  access_token_url='https://accounts.google.com/o/oauth2/token',
-						  access_token_method='POST',
-						  access_token_params={'grant_type': 'authorization_code'},
-						  consumer_key=GOOGLE_CLIENT_ID,
-						  consumer_secret=GOOGLE_CLIENT_SECRET)
-
-
-
-
-
-
 STATIC_URL_PATH = '/static'
 app = Flask(__name__, static_url_path=STATIC_URL_PATH)
 app.config['SECRET_KEY'] = 'cats'
 
+google_bp = make_google_blueprint(
+	client_id=GOOGLE_CLIENT_ID,
+	client_secret=GOOGLE_CLIENT_SECRET,
+	scope=["https://www.googleapis.com/auth/plus.me",
+		"https://www.googleapis.com/auth/userinfo.email"],
+	authorized_url='/oauth2callback'
+	)
+app.register_blueprint(google_bp)
 
-
-@app.route('/login')
-def login():
-	callback=url_for('authorized', _external=True)
-	return google.authorize(callback=callback) 
-
-@app.route(REDIRECT_URI)
-@google.authorized_handler
-def authorized(resp):
-	access_token = resp['access_token']
-	authorization_header = {"Authorization": "OAuth " + str(access_token)}
-	r = requests.get("https://www.googleapis.com/oauth2/v2/userinfo", 
-						headers=authorization_header)
-	print(r)
-	print(r.json())
-	session['access_token'] = access_token
-	session['email'] = r.json()['email']
-	return redirect(url_for('index'))
-
-
-@google.tokengetter
-def get_access_token():
-	return session.get('access_token')
+@oauth_authorized.connect_via(google_bp)
+def logged_in(blueprint, token):
+	respon_json = google.get('/oauth2/v2/userinfo').json()
+	print(respon_json)
+	session['access_token'] = token
+	session['email'] = respon_json['email']
 
 @app.route('/shelter_upload', methods=['GET', 'POST'])
 def shelter_upload():
-	#Standard Authentication End
-	access_token = session.get('access_token')
-	email = session.get('email')
-	
-	if access_token is None:
-		return redirect(url_for('login'))
+	if not google.authorized:
+		return redirect(url_for("google.login"))
 
 
 	form = CatInformation()
@@ -94,12 +62,8 @@ def shelter_upload():
 
 @app.route('/intake_upload', methods=['GET', 'POST'])
 def intake_upload():
-	#Standard Authentication End
-	access_token = session.get('access_token')
-	email = session.get('email')
-
-	if access_token is None:
-		return redirect(url_for('login'))
+	if not google.authorized:
+		return redirect(url_for("google.login"))
 
 	form = CatInformation()
 	if form.validate_on_submit():
@@ -123,12 +87,8 @@ def intake_upload():
 
 @app.route('/foster_upload', methods=['GET', 'POST'])
 def foster_upload():
-	#Standard Authentication End
-	access_token = session.get('access_token')
-	email = session.get('email')
-
-	if access_token is None:
-		return redirect(url_for('login'))
+	if not google.authorized:
+		return redirect(url_for("google.login"))
 	
 
 	form = CatInformation()
@@ -152,12 +112,18 @@ def foster_upload():
 
 @app.route('/database')
 def database():
+	if not google.authorized:
+		return redirect(url_for("google.login"))
+	
 	card = return_database()
 	card.pop(0)
 	return render_template('database.html', cards=card, title="data")
 
 @app.route('/waitlist')
 def waitlist():
+	if not google.authorized:
+		return redirect(url_for("google.login"))
+	
 	card = return_database()
 	card = [i for i in card if i[20]=="shelter"]
 	return render_template('database.html', cards=card, title="wait")
@@ -165,14 +131,10 @@ def waitlist():
 
 @app.route('/')
 def index():
-	
-	#Standard Authentication End
-	access_token = session.get('access_token')
+	if not google.authorized:
+		return redirect(url_for("google.login"))
+
 	email = session.get('email')
-
-	if access_token is None or email is None:
-		return redirect(url_for('login'))
-
 	permission = find_permission(email)
 	print(permission)
 	print(email)
@@ -190,6 +152,7 @@ def index():
 	# return render_template('index.html', title='Sign In', form=form)
 
 if __name__ == '__main__':
+	os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 	app.jinja_env.auto_reload = True
 	app.run(debug=True)
 
