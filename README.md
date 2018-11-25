@@ -6,6 +6,7 @@
 Database management and information entry for Toronto Cat Rescue: Gift the Code 2018
 
 Dependencies:
+
   - flask
   - flask-oauth
   - wtf-flask
@@ -13,6 +14,7 @@ Dependencies:
   - oauth2client
 
 ## Dev environment setup
+
     ## Set up virtual environment
     python3 -m venv env
     # Linux
@@ -25,4 +27,3 @@ Dependencies:
 
     ## Run app
     python main.py
-
