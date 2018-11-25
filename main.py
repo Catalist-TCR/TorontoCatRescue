@@ -1,16 +1,17 @@
-from flask import Flask, session, render_template, request, redirect, url_for, abort
+import os
+from flask import Flask, session, render_template, redirect, url_for
 from flask_dance.consumer import oauth_authorized
 from flask_dance.contrib.google import make_google_blueprint, google
 from werkzeug.utils import secure_filename
-from form_classes import LoginForm, CatInformation
-from google_sheets import find_permission, input_data, return_database
-import os
 from flask_wtf import CsrfProtect
-import sys
-import requests
+from form_classes import CatInformation
+from google_sheets import find_permission, input_data, return_database
 import config
 
 csrf = CsrfProtect()
+
+# Don't warn when Google changes scope on us
+os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = "1"
 
 GOOGLE_CLIENT_ID = config.OAUTH_CONFIG['GOOGLE_CLIENT_ID']
 GOOGLE_CLIENT_SECRET = config.OAUTH_CONFIG['GOOGLE_CLIENT_SECRET']
@@ -21,10 +22,9 @@ app.config['SECRET_KEY'] = 'cats'
 google_bp = make_google_blueprint(
 	client_id=GOOGLE_CLIENT_ID,
 	client_secret=GOOGLE_CLIENT_SECRET,
-	scope=["https://www.googleapis.com/auth/plus.me",
-		"https://www.googleapis.com/auth/userinfo.email"],
+	scope=["https://www.googleapis.com/auth/userinfo.email"],
 	authorized_url='/oauth2callback'
-	)
+)
 app.register_blueprint(google_bp)
 
 @oauth_authorized.connect_via(google_bp)
