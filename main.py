@@ -154,7 +154,7 @@ def foster_upload():
 def database():
 	card = return_database()
 	card.pop(0)
-	return render_template('database.html', cards=card, title="data")
+	return render_template('database.html', cards=card, title="Data")
 
 @app.route('/waitlist')
 def waitlist():
