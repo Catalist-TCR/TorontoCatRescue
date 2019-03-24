@@ -25,5 +25,10 @@ Dependencies:
     ## Install requirements
     pip install -r requirements/dev.txt
 
+    ## Create config file
+    cp config.py.example config.py
+
+    ## Edit config.py and insert Google oauth api credentials
+
     ## Run app
     python main.py
